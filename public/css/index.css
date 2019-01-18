@@ -38,7 +38,14 @@
             float: right;
             margin-right: 0;
         }
+        .ui.label.ribbon{
+            font-size: 1.35rem;
+        }
 
+        .ui.menu .ui.dropdown .menu>.item.no-hover:hover{
+                background: rgba(0,0,0, 0)!important;
+                cursor: default;
+        }
 
         @media only screen and (max-width: 700px) {
             .ui.fixed.menu {

@@ -1,15 +1,20 @@
 {
   "name": "gametask",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gamify your goals",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "http": "0.0.0",
+    "mongoose": "^5.4.5",
+    "nodemon": "^1.18.9",
     "semantic-ui": "^2.4.2"
   }
 }
