@@ -1,9 +1,10 @@
 // libraries
-require('dotenv').config();
+
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const session = require('express-session');
+require('dotenv').config();
 
 // local dependencies
 /*const db = require('./db');
