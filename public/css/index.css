@@ -1,0 +1,69 @@
+.hidden.menu {
+            display: none;
+        }
+
+        .secondary.pointing.menu .toc.item {
+            display: none;
+        }
+
+        svg {
+            height: 19px;
+            width: 19px;
+            margin-top: 9px;
+        }
+
+        .main.container {
+            padding: 2em 0em 7em;
+            padding-top: 2em;
+            padding-right: 0em;
+            padding-bottom: 7em;
+            padding-left: 0em;
+        }
+
+        .ui.celled.grid>.column:not(.row),
+        .ui.celled.grid>.row>.column {
+            -webkit-box-shadow: 0 0 0 0 #d4d4d5;
+            box-shadow: 0 0 0 0 #d4d4d5;
+        }
+
+        .ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+            margin: 0px;
+        }
+
+        .ui.horizontal.label.right {
+            float: right
+        }
+
+        .ui.dropdown .menu>.item>.label.right {
+            float: right;
+            margin-right: 0;
+        }
+
+
+        @media only screen and (max-width: 700px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+
+            .secondary.pointing.menu .item,
+            .secondary.pointing.menu .menu {
+                display: none;
+            }
+
+
+            .secondary.pointing.menu .menu .item.mobile-none {
+                display: block;
+            }
+
+            .mobile-none {
+                display: block;
+            }
+
+            .secondary.pointing.menu .toc.item {
+                display: block;
+            }
+        }
+
+        .ui.progress:last-child {
+            margin: 1.5em 0 0;
+        }
