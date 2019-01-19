@@ -46,19 +46,36 @@
                 background: rgba(0,0,0, 0)!important;
                 cursor: default;
         }
+        .main .ui.secondary.pointing.menu .item{
+            padding: .5rem .3rem;
+        }
+        .main .ui.secondary.pointing.menu{
+            margin-bottom: -.6rem;
+        }
+        /*MISTAKES THAT NEED FIXING?*/
+        .masthead .ui.secondary.pointing.menu{
+            border-bottom: #fff;
+        }
+        body.pushable .pusher{
+            background-color:#fbfbfb
+        }
+        .ui.vertical.segment{
+            background: #fff
+        }
+        
 
         @media only screen and (max-width: 700px) {
             .ui.fixed.menu {
                 display: none !important;
             }
 
-            .secondary.pointing.menu .item,
-            .secondary.pointing.menu .menu {
+            .masthead .secondary.pointing.menu .item,
+            .masthead .secondary.pointing.menu .menu {
                 display: none;
             }
 
 
-            .secondary.pointing.menu .menu .item.mobile-none {
+            .masthead .secondary.pointing.menu .menu .item.mobile-none {
                 display: block;
             }
 
@@ -66,7 +83,7 @@
                 display: block;
             }
 
-            .secondary.pointing.menu .toc.item {
+            .masthead .secondary.pointing.menu .toc.item {
                 display: block;
             }
         }
