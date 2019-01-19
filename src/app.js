@@ -7,11 +7,11 @@ const session = require('express-session');
 require('dotenv').config();
 
 // local dependencies
-/*const db = require('./db');
+const db = require('./db');
 const passport = require('./passport');
 
 const api = require('./routes/api');
-*/
+
 const views = require('./routes/views');
 
 // initialize express app
@@ -27,13 +27,13 @@ app.use(session({
     resave: 'false',
     saveUninitialized: 'true'
 }));
-/*
+
 // hook up passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // authentication routes
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get(
     '/auth/google/callback',
@@ -50,10 +50,10 @@ app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
 });
-*/
+
 // set routes
 app.use('/', views);
-//app.use('/api', api);
+app.use('/api', api);
 app.use('/static', express.static('public'));
 app.use('/static2', express.static('semantic'));
 

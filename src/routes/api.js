@@ -9,8 +9,8 @@ const LongTerm = require('../models/longterm');
 const Habit = require('../models/habit');
 const Reward = require('../models/reward');
 
-const Story = require('../models/story');
-const Comment = require('../models/comment');
+// const Story = require('../models/story');
+// const Comment = require('../models/comment');
 
 const router = express.Router();
 
