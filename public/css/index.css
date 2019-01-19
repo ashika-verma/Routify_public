@@ -62,6 +62,9 @@
         .ui.vertical.segment{
             background: #fff
         }
+        input[type=checkbox]:checked + label{
+            text-decoration: line-through;
+        }
         
 
         @media only screen and (max-width: 700px) {
@@ -69,8 +72,8 @@
                 display: none !important;
             }
 
-            .masthead .secondary.pointing.menu .item,
-            .masthead .secondary.pointing.menu .menu {
+            .masthead .secondary.pointing.menu .item:not(.mobile-none),
+            .masthead .secondary.pointing.menu .menu:not(.mobile-none) {
                 display: none;
             }
 

@@ -41,18 +41,34 @@ router.post(
             'text': req.body.content,
             'complete': req.body.complete,
         });
-
-
-
-        newTodo.save(function (err, story) {
+        newTodo.save(function (err, todo) {
 
             // configure socketio
             if (err) console.log(err);
+            res.send({ "id": todo._id });
+        });
+
+    }
+);
+
+router.post(
+    '/todoChecked',
+    function (req, res) {
+        Todo.findOne({ _id: req.body.id }, function (err, todo) {
+            //res.send(todo);
+            todo.complete = req.body.checked;
+
+            todo.save(function (err) {
+                if (err) console.log(err);
+            });
+
         });
 
         res.send({});
     }
 );
+
+
 
 /*
 

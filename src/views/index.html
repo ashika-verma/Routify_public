@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GameTask</title>
     <link rel="stylesheet" type="text/css" href="/static2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/semantic-ui-alert.css">
     <link rel="stylesheet" type="text/css" href="/static/css/range.css">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 
@@ -40,7 +41,7 @@
                     <a class="active item">You</a>
                     <a class="item">Leaderboard</a>
                     <a class="item" href="/auth/google">Login</a>
-                    <div class="right menu">
+                    <div class="right menu " style="display: flex;">
                         <div class="item">
                             <a><i class="large icon"><img src="/static/css/img/diamonds.svg"></i>50</a>
                         </div>
@@ -122,25 +123,8 @@
                             <input id="todo-text-input" type="text" placeholder="Call MIT medical...">
                         </div>
                         <div class="ui yellow secondary inverted segment">
-                            <div class="ui segments">
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
+                            <div id="todos" class="ui segments">
+                                <!-- WHERE TODOS GO -->
                             </div>
                         </div>
 
@@ -317,6 +301,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
 <script src="/static2/dist/semantic.min.js"></script>
+<script src="/static/js/semantic-ui-alert.js"></script>
 <script>
     $(document)
         .ready(function () {
