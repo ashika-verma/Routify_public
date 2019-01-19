@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Routify</title>
+    <link rel="stylesheet" type="text/css" href="/static2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/semantic-ui-alert.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+
+
+</head>
+
+<body>
+
+    <div class="clip clip-1"></div>
+    <div class="clip clip-2"></div>
+    <div class="clip clip-3"></div>
+    <div class="clip clip-4"></div>
+    <div class="clip clip-5"></div>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h1 class="ui image header">
+                Login
+            </h1>
+            <hr class="style1">
+            <br>
+            <h4>Welcome back to <span class="teal">Routify</span>!<br />
+                Need an account? Please sign up <a class="ui teal" href="/auth/google">here</a>.
+            </h4>
+            <button onclick="window.location.href='/auth/google'" class="ui google button">
+                <i class="google icon"></i>
+                Sign in with Google
+            </button>
+
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+<script src="/static2/dist/semantic.min.js"></script>
+<script src="/static/js/semantic-ui-alert.js"></script>
+<script>
+    $(document)
+        .ready(function () {
+            // fix menu when passed
+            $('.masthead')
+                .visibility({
+                    once: false,
+                    onBottomPassed: function () {
+                        $('.fixed.menu').transition('fade in');
+                    },
+                    onBottomPassedReverse: function () {
+                        $('.fixed.menu').transition('fade out');
+                    }
+                })
+                ;
+            //initialize dropdowns
+            $('.ui.dropdown')
+                .dropdown();
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+                ;
+
+        })
+        ;
+</script>
+<script src="/static/js/api.js"></script>
+
+</html>

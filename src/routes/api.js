@@ -21,6 +21,8 @@ router.get('/whoami', function (req, res) {
         res.send(req.user);
     }
     else {
+        //res.redirect('/home');
+
         res.send({});
     }
 });
