@@ -25,6 +25,7 @@ router.get('/whoami', function (req, res) {
     }
 });
 
+
 //TODO
 router.get('/todo', function (req, res) {
     Todo.find({}, function (err, todos) {
@@ -34,17 +35,16 @@ router.get('/todo', function (req, res) {
 
 router.post(
     '/todo',
-    connect.ensureLoggedIn(),
     function (req, res) {
-        const newStory = new Story({
+        const newTodo = new Todo({
             'creator_id': req.user._id,
             'text': req.body.content,
-            'complete': req.body.content,
+            'complete': req.body.complete,
         });
 
 
 
-        newStory.save(function (err, story) {
+        newTodo.save(function (err, story) {
 
             // configure socketio
             if (err) console.log(err);
@@ -54,7 +54,7 @@ router.post(
     }
 );
 
-
+/*
 
 router.get('/user', function (req, res) {
     User.findOne({ _id: req.query._id }, function (err, user) {
@@ -118,5 +118,5 @@ router.post(
 
         res.send({});
     }
-);
+);*/
 module.exports = router;
