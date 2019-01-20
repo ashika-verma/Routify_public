@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
 const LongTermModelSchema = new mongoose.Schema({
     creator_id: String,
     text: String,
-    percentage: Number,
-    complete: Boolean
+    percentage: Number
 });
 
 // compile model from schema

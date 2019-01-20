@@ -71,6 +71,48 @@ router.post(
 );
 
 
+//LONGTERM
+router.get('/longterm', function (req, res) {
+    LongTerm.find({}, function (err, todos) {
+        res.send(todos);
+    });
+});
+
+router.post(
+    '/longterm',
+    function (req, res) {
+        const newLongTerm = new LongTerm({
+            'creator_id': req.user._id,
+            'text': req.body.content,
+            'percentage': req.body.percentage
+        });
+        newLongTerm.save(function (err, longterm) {
+
+            // configure socketio
+            if (err) console.log(err);
+            res.send({ "id": longterm._id });
+        });
+
+    }
+);
+
+router.post(
+    '/longtermUpdated',
+    function (req, res) {
+        LongTerm.findOne({ _id: req.body.id }, function (err, longterm) {
+            //res.send(todo);
+            longterm.percentage = req.body.percentage;
+
+            longterm.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+
+        res.send({});
+    }
+);
+
 
 /*
 

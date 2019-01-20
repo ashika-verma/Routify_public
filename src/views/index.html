@@ -147,38 +147,11 @@
                     </div>
                     <div class="ui segments">
                         <div class="ui primary green inverted segment fluid icon input">
-                            <input type="text" placeholder="Read a book in a month...">
+                            <input id="longterm-text-input" type="text" placeholder="Read a book in a month...">
                         </div>
                         <div class="ui secondary inverted green segment">
-                            <div class="ui segments">
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">work on book
-                                        <div class="ui green horizontal label right">58%</div>
-                                    </div>
-                                    <div class="ui slidecontainer">
-                                        <input type="range" min="1" max="100" value="58" class="slider" id="myRange">
-                                    </div>
-
-
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">do 3 month paper
-                                        <div class="ui grey horizontal label right">0%</div>
-                                    </div>
-                                    <div class="ui slidecontainer">
-                                        <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
-                                    </div>
-
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">make video game
-                                        <div class="ui green horizontal label right">20%</div>
-                                    </div>
-                                    <div class="ui slidecontainer">
-                                        <input type="range" min="1" max="100" value="20" class="slider" id="myRange">
-                                    </div>
-
-                                </div>
+                            <div id="longterms" class="ui segments">
+                                <!-- WHERE LONGTERMS GO -->
                             </div>
                         </div>
 
@@ -331,6 +304,7 @@
 </script>
 <script src="/static/js/api.js"></script>
 <script src="/static/js/todo.js"></script>
+<script src="/static/js/longterm.js"></script>
 <script src="/static/js/index.js"></script>
 
 </html>

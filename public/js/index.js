@@ -4,6 +4,7 @@ function main() {
     get('/api/whoami', {}, function (user) {
         console.log(user);
         renderTodos(user);
+        renderLongterms(user);
     });
 }
 
@@ -17,6 +18,15 @@ $("#todo-text-input").on('keyup', function (e) {
         console.log("please");
     }
 });
+
+$("#longterm-text-input").on('keyup', function (e) {
+    if (e.keyCode == 13 && document.getElementById("longterm-text-input").value !== "") {
+        // Do something
+        submitLongtermHandler();
+        console.log("please");
+    }
+});
+
 
 
 
