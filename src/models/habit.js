@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const HabitModelSchema = new mongoose.Schema({
     creator_id: String,
     text: String,
-    timesDone: Number
+    count: Number
 });
 
 // compile model from schema

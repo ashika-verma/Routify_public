@@ -114,6 +114,71 @@ router.post(
 );
 
 
+//HABIT
+router.get('/habit', function (req, res) {
+    Habit.find({}, function (err, todos) {
+        res.send(todos);
+    });
+});
+
+router.post(
+    '/habit',
+    function (req, res) {
+        const newHabit = new Habit({
+            'creator_id': req.user._id,
+            'text': req.body.content,
+            'count': req.body.count
+        });
+        newHabit.save(function (err, habit) {
+
+            // configure socketio
+            if (err) console.log(err);
+            res.send({ "id": habit._id });
+        });
+
+    }
+);
+router.post(
+    '/habitUpdated',
+    function (req, res) {
+        Habit.findOne({ _id: req.body.id }, function (err, habit) {
+            //res.send(todo);
+            habit.count = req.body.count;
+
+            habit.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+
+        res.send({});
+    }
+);
+
+//REWARD
+router.get('/reward', function (req, res) {
+    Reward.find({}, function (err, rewards) {
+        res.send(rewards);
+    });
+});
+
+router.post(
+    '/reward',
+    function (req, res) {
+        const newReward = new Reward({
+            'creator_id': req.user._id,
+            'text': req.body.content,
+        });
+        newReward.save(function (err, reward) {
+
+            // configure socketio
+            if (err) console.log(err);
+            res.send({ "id": reward._id });
+        });
+
+    }
+);
+
 /*
 
 router.get('/user', function (req, res) {

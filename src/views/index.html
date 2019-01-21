@@ -7,6 +7,10 @@
     <title>Routify</title>
     <link rel="stylesheet" type="text/css" href="/static2/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/semantic-ui-alert.css">
+    <!-- for calender of semantic ui feel -->
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
+        rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" type="text/css" href="/static/css/range.css">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 
@@ -174,43 +178,11 @@
                     </div>
                     <div class="ui segments">
                         <div class="ui primary blue inverted segment fluid icon input">
-                            <input type="text" placeholder="Drink 8 glasses of water...">
+                            <input id="habit-text-input" type="text" placeholder="Drink 8 glasses of water...">
                         </div>
                         <div class="ui secondary inverted blue segment">
-                            <div class="ui segments">
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">looked at phone
-                                        <div class="ui red horizontal label right">-1</div>
-                                    </div>
-                                    <div class="ui fluid buttons">
-                                        <button class="ui button"><i class="chevron down icon"></i></button>
-                                        <div class="or"></div>
-                                        <button class="ui button"><i class="chevron up icon"></i></button>
-                                    </div>
-
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">drink more water
-                                        <div class="ui grey horizontal label right">0</div>
-                                    </div>
-                                    <div class="ui fluid buttons">
-                                        <button class="ui button"><i class="chevron down icon"></i></button>
-                                        <div class="or"></div>
-                                        <button class="ui button"><i class="chevron up icon"></i></button>
-                                    </div>
-
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui compact clearing segment">get up from desk and walk
-                                        <div class="ui green horizontal label right">2</div>
-                                    </div>
-                                    <div class="ui fluid buttons">
-                                        <button class="ui button"><i class="chevron down icon"></i></button>
-                                        <div class="or"></div>
-                                        <button class="ui button"><i class="chevron up icon"></i></button>
-                                    </div>
-
-                                </div>
+                            <div id="habits" class="ui segments">
+                                <!-- WHERE HABITS GO -->
                             </div>
                         </div>
 
@@ -233,32 +205,39 @@
                     </div>
                     <div class="ui segments">
                         <div class="ui primary inverted purple segment fluid icon input">
-                            <input type="text" placeholder="Eat one bowl of ice cream...">
+                            <input id="reward-text-input" type="text" placeholder="Eat one bowl of ice cream...">
                         </div>
                         <div class="ui secondary inverted purple segment">
-                            <div class="ui segments">
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
-                                <div class="ui compact segment">
-                                    <div class="ui checkbox">
-                                        <input type="checkbox" name="example">
-                                        <label>Make my profile visible</label>
-                                    </div>
-                                </div>
+                            <div id="rewards" class="ui segments">
+                                <!-- WHERE REWARDS GO -->
                             </div>
                         </div>
 
                     </div>
+
+                    <div class="ui modal">
+                        <div class="header blue">
+                            <div class="ui transparent fluid input">
+                                <input type="text" placeholder="Edit Title..." value="Running away">
+                            </div>
+                        </div>
+                        <div class="content blue">
+                            <h4>Date:</h4>
+                            <div class="ui calendar" id="example2">
+                                <div class="ui input left icon">
+                                    <i class="calendar icon"></i>
+                                    <input type="text" placeholder="Date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions blue">
+                            <div class="ui approve button">Save</div>
+
+                            <div class="ui cancel red button">Cancel</div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
@@ -275,6 +254,8 @@
     crossorigin="anonymous"></script>
 <script src="/static2/dist/semantic.min.js"></script>
 <script src="/static/js/semantic-ui-alert.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
 <script>
     $(document)
         .ready(function () {
@@ -305,6 +286,15 @@
 <script src="/static/js/api.js"></script>
 <script src="/static/js/todo.js"></script>
 <script src="/static/js/longterm.js"></script>
+<script src="/static/js/habit.js"></script>
+<script src="/static/js/reward.js"></script>
 <script src="/static/js/index.js"></script>
+<script>
+    $('#example2').calendar({
+        type: 'date'
+    });
+
+
+</script>
 
 </html>

@@ -5,6 +5,8 @@ function main() {
         console.log(user);
         renderTodos(user);
         renderLongterms(user);
+        renderHabits(user);
+        renderRewards(user);
     });
 }
 
@@ -23,6 +25,22 @@ $("#longterm-text-input").on('keyup', function (e) {
     if (e.keyCode == 13 && document.getElementById("longterm-text-input").value !== "") {
         // Do something
         submitLongtermHandler();
+        console.log("please");
+    }
+});
+
+$("#habit-text-input").on('keyup', function (e) {
+    if (e.keyCode == 13 && document.getElementById("habit-text-input").value !== "") {
+        // Do something
+        submitHabitHandler();
+        console.log("please");
+    }
+});
+
+$("#reward-text-input").on('keyup', function (e) {
+    if (e.keyCode == 13 && document.getElementById("reward-text-input").value !== "") {
+        // Do something
+        submitRewardHandler();
         console.log("please");
     }
 });

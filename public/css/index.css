@@ -33,6 +33,9 @@
         .ui.horizontal.label.right {
             float: right
         }
+        .ui.horizontal.right {
+            float: right
+        }
 
         .ui.dropdown .menu>.item>.label.right {
             float: right;
@@ -93,4 +96,41 @@
 
         .ui.progress:last-child {
             margin: 1.5em 0 0;
+        }
+
+        .ui.modal>.actions.yellow{
+            background-color: #fbbd08
+        }
+        .ui.modal>.content.yellow{
+            background-color: #fcca39
+        }
+        .ui.modal>.header.yellow{
+            background-color: #fcca39
+        }
+        .ui.modal>.actions.green{
+            background-color: #21BA45
+        }
+        .ui.modal>.content.green{
+            background-color: #4dc76a
+        }
+        .ui.modal>.header.green{
+            background-color: #4dc76a
+        }
+        .ui.modal>.actions.purple{
+            background-color: #A333C8
+        }
+        .ui.modal>.content.purple{
+            background-color: #b55cd3
+        }
+        .ui.modal>.header.purple{
+            background-color: #b55cd3
+        }
+        .ui.modal>.actions.blue{
+            background-color: #2185D0
+        }
+        .ui.modal>.content.blue{
+            background-color: #4d9dd9
+        }
+        .ui.modal>.header.blue{
+            background-color: #4d9dd9
         }

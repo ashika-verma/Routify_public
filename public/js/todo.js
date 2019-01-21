@@ -102,3 +102,12 @@ function renderTodos(user) {
         }
     });
 }
+
+//what date addition might look like
+/* <div style="
+    position: relative;
+    font-size: .7rem;
+    left: 26px;
+">
+Due: 1/19/2039
+</div> */

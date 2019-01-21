@@ -130,17 +130,34 @@ function renderLongterms(user) {
     });
 }
 
+//updates server about new position of slider
 function onLongtermSlideHandler() {
-    console.log(this.parentElement.parentElement.id);
+    const longtermID = this.parentElement.parentElement.id;
     console.log(this.value);
+    let newVal = this.value;
     const data = {
-        id: this.parentElement.parentElement.id,
+        id: longtermID,
         percentage: this.value
     }
 
+
+    get('/api/longterm', {}, function (longtermArr) {
+        let before = 0;
+        for (i in longtermArr) {
+            if (longtermArr[i]._id === longtermID) {
+                before = longtermArr[i].percentage;
+            }
+        }
+        doAlert(newVal - before);
+    });
+
+
+
     post('/api/longtermUpdated', data);
+
 }
 
+//updates label and nothing else
 function slideyBoySlides() {
     let label = this.parentElement.parentElement.firstElementChild.firstElementChild;
     label.innerText = this.value + "%";
@@ -154,12 +171,13 @@ function slideyBoySlides() {
 }
 
 function doAlert(changed) {
+    console.log(changed);
     if (changed > 0) {
         $.uiAlert({
-            textHead: 'You may now log-in with the username you have chosen', // header
-            text: 'You may now log-in with the username you have chosen', // Text
-            bgcolor: '#19c3aa', // background-color
-            textcolor: '#21ba45', // color
+            textHead: 'Fantastic! You just earned __ gold and __ xp!', // header
+            text: 'Keep on going! You are doing great!', // Text
+            bgcolor: '#21ba45', // background-color
+            textcolor: '#fff', // color
             position: 'top-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
             time: 3, // time
@@ -172,7 +190,7 @@ function doAlert(changed) {
             bgcolor: '#db2828', // background-color
             textcolor: '#fff', // color
             position: 'top-right',// position . top And bottom ||  left / center / right
-            icon: 'checkmark box', // icon in semantic-UI
+            icon: 'remove circle', // icon in semantic-UI
             time: 3, // time
         })
     }
