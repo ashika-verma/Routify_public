@@ -111,13 +111,13 @@
                     <div class="ui secondary pointing menu">
                         <h3 class="item">To Do</h3>
                         <div class="right menu">
-                            <a class="ui green item">
+                            <a onclick="todoShow(this,'all')" class="ui active yellow item">
                                 All
                             </a>
-                            <a class="ui green item">
+                            <a id="todo-menu-default" onclick="todoShow(this,'not done')" class="ui yellow item">
                                 Not Done
                             </a>
-                            <a class="green ui item">
+                            <a onclick="todoShow(this,'done')" class="yellow ui item">
                                 Done
                             </a>
                         </div>
@@ -138,7 +138,7 @@
                     <div class="ui red secondary pointing menu">
                         <h3 class="item">Long Term</h3>
                         <div class="right menu">
-                            <a class="ui green item">
+                            <a class="ui green active item">
                                 All
                             </a>
                             <a class="ui green item">
@@ -165,13 +165,13 @@
                     <div class="ui secondary pointing menu">
                         <h3 class="item">Habits</h3>
                         <div class="right menu">
-                            <a class="ui green item">
+                            <a class="ui blue active item">
                                 All
                             </a>
-                            <a class="ui green item">
+                            <a class="ui blue item">
                                 Not Done
                             </a>
-                            <a class="green ui item">
+                            <a class="blue ui item">
                                 Done
                             </a>
                         </div>
@@ -192,13 +192,13 @@
                     <div class="ui secondary pointing menu">
                         <h3 class="item">Rewards</h3>
                         <div class="right menu">
-                            <a class="ui green item">
+                            <a class="ui active purple item">
                                 All
                             </a>
-                            <a class="ui green item">
+                            <a class="ui purple item">
                                 Not Done
                             </a>
-                            <a class="green ui item">
+                            <a class="purple ui item">
                                 Done
                             </a>
                         </div>
@@ -214,36 +214,33 @@
                         </div>
 
                     </div>
-
-                    <div class="ui modal">
-                        <div class="header blue">
-                            <div class="ui transparent fluid input">
-                                <input type="text" placeholder="Edit Title..." value="Running away">
-                            </div>
-                        </div>
-                        <div class="content blue">
-                            <h4>Date:</h4>
-                            <div class="ui calendar" id="example2">
-                                <div class="ui input left icon">
-                                    <i class="calendar icon"></i>
-                                    <input type="text" placeholder="Date">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="actions blue">
-                            <div class="ui approve button">Save</div>
-
-                            <div class="ui cancel red button">Cancel</div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
 
-
         </div>
 
+        <!-- MODALS -->
+        <div id="todo-modal" class="ui modal">
+            <div class="header yellow">
+                <div class="ui transparent fluid input">
+                    <input type="text" placeholder="Edit Title..." value="Running away">
+                </div>
+            </div>
+            <div class="content yellow">
+                <h4>Date:</h4>
+                <div class="ui calendar" id="example2">
+                    <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input id="todo-modal-date" type="text" placeholder="Date">
+                    </div>
+                </div>
+            </div>
+            <div class="actions yellow">
+                <div class="ui approve button">Save</div>
+
+                <div class="ui cancel red button">Delete</div>
+            </div>
+        </div>
 
 
 
@@ -293,7 +290,6 @@
     $('#example2').calendar({
         type: 'date'
     });
-
 
 </script>
 

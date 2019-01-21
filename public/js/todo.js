@@ -3,6 +3,7 @@ function todoDOMObject(todoJSON, user) {
     segment.setAttribute('id', todoJSON._id);
     segment.className = 'ui compact segment';
 
+
     const checkBox = document.createElement('div');
     checkBox.className = 'ui checkbox';
     segment.appendChild(checkBox);
@@ -13,6 +14,7 @@ function todoDOMObject(todoJSON, user) {
     input.onclick = checkboxClickedHandler;
     const label = document.createElement('label');
     label.textContent = todoJSON.text;
+    label.onclick = todoModal;
 
     checkBox.appendChild(input);
     checkBox.appendChild(label);
@@ -74,6 +76,7 @@ function submitTodoHandler() {
         const label = document.createElement('label');
         //text
         label.textContent = data.content;
+        label.onclick = todoModal;
 
         checkBox.appendChild(input);
         checkBox.appendChild(label);
@@ -98,9 +101,11 @@ function renderTodos(user) {
             if (currentTodo.creator_id == user._id) {
                 todosDiv.prepend(todoDOMObject(currentTodo, user));
             }
-
         }
+
     });
+
+
 }
 
 //what date addition might look like
@@ -111,3 +116,69 @@ function renderTodos(user) {
 ">
 Due: 1/19/2039
 </div> */
+
+function todoModal() {
+    let todoID = this.parentElement.parentElement.id;
+    document.getElementById(todoID).innerText;
+    document.getElementById('todo-modal').firstElementChild.firstElementChild.firstElementChild.value = document.getElementById(todoID).innerText;
+    $('#todo-modal')
+        .modal({
+            onDeny: function () {
+                const data = {
+                    id: todoID,
+                };
+                document.getElementById(todoID).outerHTML = "";
+                post('/api/todoDeleted', data);
+            },
+            onApprove: function () {
+                const newCont = document.getElementById('todo-modal').firstElementChild.firstElementChild.firstElementChild.value;
+                const data = {
+                    id: todoID,
+                    content: newCont,
+                };
+                post('/api/todoUpdated', data);
+            }
+        })
+        .modal('show');
+
+}
+
+function todoShow(element, name) {
+
+    let elementArr = document.getElementsByClassName('ui active yellow item');
+    for (i in elementArr) {
+        elementArr[i].className = 'ui yellow item';
+    }
+    element.classList.add('active');
+
+
+
+
+    let chillin = document.getElementById('todos').children;
+    if (name === "all") {
+        for (i in chillin) {
+            chillin[i].style.display = 'block';
+        }
+    } else if (name === "not done") {
+        for (i in chillin) {
+            if (chillin[i].firstElementChild.firstElementChild.checked) {
+                chillin[i].style.display = 'none';
+            } else {
+                chillin[i].style.display = 'block';
+            }
+
+        }
+    }
+    else if (name === "done") {
+        for (i in chillin) {
+            if (chillin[i].firstElementChild.firstElementChild.checked) {
+                chillin[i].style.display = 'block';
+            } else {
+                chillin[i].style.display = 'none';
+            }
+
+        }
+    }
+
+
+}

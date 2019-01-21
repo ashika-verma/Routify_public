@@ -69,6 +69,31 @@ router.post(
         res.send({});
     }
 );
+router.post(
+    '/todoUpdated',
+    function (req, res) {
+        Todo.findOne({ _id: req.body.id }, function (err, todo) {
+            //res.send(todo);
+            todo.text = req.body.content;
+
+            todo.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+
+        res.send({});
+    }
+);
+
+router.post(
+    '/todoDeleted',
+    function (req, res) {
+        Todo.deleteOne({ _id: req.body.id }).exec();
+        res.send({});
+
+    }
+);
 
 
 //LONGTERM
