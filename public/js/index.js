@@ -3,6 +3,7 @@
 function main() {
     get('/api/whoami', {}, function (user) {
         console.log(user);
+        renderUserInfo(user);
         renderTodos(user);
         renderLongterms(user);
         renderHabits(user);

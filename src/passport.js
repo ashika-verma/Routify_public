@@ -17,7 +17,11 @@ passport.use(new GoogleStrategy({
         if (!user) {
             user = new User({
                 name: profile.displayName,
-                googleid: profile.id
+                googleid: profile.id,
+                level: 1,
+                xp: 0,
+                gold: 0,
+                health: 20
             });
 
             user.save(function (err) {
