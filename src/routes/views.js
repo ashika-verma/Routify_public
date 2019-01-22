@@ -15,8 +15,8 @@ router.get('/u/profile', function (req, res) {
     res.sendFile('profile.html', { root: 'src/views' });
 });
 
-router.get('/home', function (req, res) {
-    res.sendFile('home.html', { root: 'src/views' });
+router.get('/leaderboard', function (req, res) {
+    res.sendFile('leaderboard.html', { root: 'src/views' });
 });
 
 module.exports = router;

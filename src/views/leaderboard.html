@@ -1,0 +1,264 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Routify</title>
+    <link rel="stylesheet" type="text/css" href="/static2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/semantic-ui-alert.css">
+    <!-- for calender of semantic ui feel -->
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/range.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/leaderboard.css">
+
+
+</head>
+
+<body>
+
+    <body class="pushable">
+
+        <!-- Sidebar Menu -->
+        <div class="ui vertical inverted sidebar menu left">
+            <div class="item">
+                Ashika Verma
+            </div>
+
+            <a class="item" href="/">You</a>
+            <a class="active item">Leaderboard</a>
+            <a href="/logout" class="item">Log Out</a>
+        </div>
+
+
+        <!-- Page Contents -->
+        <div class="ui inverted secondary grey pusher">
+            <div class="ui vertical masthead center aligned segment">
+
+                <div class="ui teal large secondary pointing menu">
+                    <a class="toc item">
+                        <i class="big sidebar icon"></i>
+                    </a>
+                    <div class="header item josefin">Routify</div>
+                    <a class="item" href="/">You</a>
+                    <a class="active item" href="/leaderboard">Leaderboard</a>
+                    <a class="item">Join Party</a>
+                    <a class="item" href="/auth/google">Login</a>
+                    <div class="right menu " style="display: flex;">
+                        <div class="item">
+                            <a><i class="large icon"><img src="/static/css/img/diamonds.svg"></i>50</a>
+                        </div>
+                        <div class="item">
+                            <a><i class="large icon"><img src="/static/css/img/two-coins.svg"></i>127</a>
+                        </div>
+                        <div class="item">
+                            <a><i class="large icon"><img src="/static/css/img/hearts.svg"></i>100</a>
+                        </div>
+
+                        <div class="ui item floating dropdown icon  mobile-none">
+                            <i class="large user circle outline icon"></i>
+                            <div class="ui vertical menu">
+                                <div class="no-hover item">
+                                    <h3>Ashika Verma</h3>
+                                </div>
+                                <div class="no-hover item">
+
+                                    <div class="teal ui ribbon label "> Level 1: Warrior </div>
+                                </div>
+                                <div class="no-hover item">
+                                    <div>
+                                        <i class="icon"><img src="/static/css/img/diamonds.svg"></i>
+                                        140/160
+                                    </div>
+                                    <div class="ui active small progress teal">
+                                        <div class="bar"></div>
+                                    </div>
+                                </div>
+                                <div class="no-hover item">
+                                    <div>
+                                        <i class="icon"><img src="/static/css/img/hearts.svg"></i>
+                                        100/100
+                                    </div>
+                                    <div class="ui active small progress red">
+                                        <div class="bar"></div>
+                                    </div>
+                                </div>
+                                <div class="no-hover item">
+                                    <div>
+                                        <i class="icon"><img src="/static/css/img/two-coins.svg"></i>
+                                        140/160
+                                    </div>
+                                    <div class="ui active small progress teal">
+                                        <div class="bar"></div>
+                                    </div>
+                                </div>
+                                <div class="ui item">
+                                    <h4>Join Party</h4>
+                                </div>
+                                <div class="ui item">
+                                    <h4>Log Out</h4>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="main ui stackable internally celled grid">
+                <div class="row">
+                    <div class="sixteen wide computer column">
+
+                        <div class="ui secondary pointing menu">
+                            <h3 class="item">Leaderboard</h3>
+                            <div class="right menu">
+                                <a onclick="" class="ui active teal item">
+                                    Your Leaderboards
+                                </a>
+                                <a id="todo-menu-default" class="ui teal item">
+                                    Overall
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="eight wide computer column">
+
+                        <div class="ui segments">
+                            <div class="ui teal primary inverted segment fluid icon input">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">Rank</div>
+                                        <div class="eleven wide column">Name</div>
+                                        <div class="two wide column large screen only">xp:</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal tertiary inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#1</div>
+                                        <div class="eleven wide column">Ashika</div>
+                                        <div class="two wide column large screen only">120</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal secondary inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#2</div>
+                                        <div class="eleven wide column">Your mom</div>
+                                        <div class="two wide column large screen only">114</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal tertiary inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#3</div>
+                                        <div class="eleven wide column">asdf</div>
+                                        <div class="two wide column large screen only">110</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="eight wide computer column">
+
+                        <div class="ui segments">
+                            <div class="ui teal primary inverted segment fluid icon input">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">Rank</div>
+                                        <div class="eleven wide column">Name</div>
+                                        <div class="two wide column large screen only">xp:</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal tertiary inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#54</div>
+                                        <div class="eleven wide column">Ashika</div>
+                                        <div class="two wide column large screen only">12</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal secondary inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#55</div>
+                                        <div class="eleven wide column">Your mom</div>
+                                        <div class="two wide column large screen only">11</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui blue inverted segment">
+                                <div class="ui container">
+                                    <div class="ui grid">
+                                        <div class="three wide column">#56</div>
+                                        <div class="eleven wide column">You</div>
+                                        <div class="two wide column large screen only">11</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </body>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+<script src="/static2/dist/semantic.min.js"></script>
+<script src="/static/js/semantic-ui-alert.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<script>
+    $(document)
+        .ready(function () {
+            // fix menu when passed
+            $('.masthead')
+                .visibility({
+                    once: false,
+                    onBottomPassed: function () {
+                        $('.fixed.menu').transition('fade in');
+                    },
+                    onBottomPassedReverse: function () {
+                        $('.fixed.menu').transition('fade out');
+                    }
+                })
+                ;
+            //initialize dropdowns
+            $('.ui.dropdown')
+                .dropdown();
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+                ;
+
+        })
+        ;
+</script>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/leaderboard.js"></script>
+
+</html>
