@@ -6,6 +6,7 @@ function longtermDOMObject(longtermJSON, user) {
     const innerSegment = document.createElement('div');
     innerSegment.className = 'ui compact segment';
     innerSegment.innerText = longtermJSON.text;
+    innerSegment.onclick = longtermModal;
 
     const label = document.createElement('div');
     if (longtermJSON.percentage > 0) {
@@ -29,7 +30,6 @@ function longtermDOMObject(longtermJSON, user) {
     input.onchange = onLongtermSlideHandler;
     input.oninput = slideyBoySlides;
     input.className = "slider";
-    console.log(input);
 
     slidecontainer.appendChild(input);
     innerSegment.appendChild(label);
@@ -68,8 +68,7 @@ function submitLongtermHandler() {
 
     post('/api/longterm', data, longterm => {
 
-        console.log(longterm);
-        //make new todo here
+        //make new longterm here
         const longtermsDiv = document.getElementById('longterms');
 
         const segment = document.createElement('div');
@@ -79,6 +78,7 @@ function submitLongtermHandler() {
         const innerSegment = document.createElement('div');
         innerSegment.className = 'ui compact segment';
         innerSegment.innerText = newLongtermInput.value;
+        innerSegment.onclick = longtermModal;
 
         const label = document.createElement('div');
         label.className = 'ui grey horizontal label right';
@@ -98,7 +98,6 @@ function submitLongtermHandler() {
         input.onchange = onLongtermSlideHandler;
         input.oninput = slideyBoySlides;
         input.className = "slider";
-        console.log(input);
 
         slidecontainer.appendChild(input);
         innerSegment.appendChild(label);
@@ -133,7 +132,6 @@ function renderLongterms(user) {
 //updates server about new position of slider
 function onLongtermSlideHandler() {
     const longtermID = this.parentElement.parentElement.id;
-    console.log(this.value);
     let newVal = this.value;
     const data = {
         id: longtermID,
@@ -169,9 +167,35 @@ function slideyBoySlides() {
         label.classList.remove("green");
     }
 }
+function longtermModal() {
+    let longtermID = this.parentElement.id;
+    document.getElementById(longtermID).textContent;
+    //childNodes[0].nodeValue
+    document.getElementById('longterm-modal-input').value = document.getElementById(longtermID).firstElementChild.childNodes[0].nodeValue;
+    $('#longterm-modal')
+        .modal({
+            onDeny: function () {
+                const data = {
+                    id: longtermID,
+                };
+                document.getElementById(longtermID).outerHTML = "";
+                post('/api/longtermDeleted', data);
+            },
+            onApprove: function () {
+                const newCont = document.getElementById('longterm-modal-input').value;
+                const data = {
+                    id: longtermID,
+                    content: newCont,
+                };
+                document.getElementById(longtermID).firstElementChild.childNodes[0].nodeValue = newCont;
+                post('/api/longtermModalUpdated', data);
+            }
+        })
+        .modal('show');
+
+}
 
 function doAlert(changed) {
-    console.log(changed);
     if (changed > 0) {
         $.uiAlert({
             textHead: 'Fantastic! You just earned __ gold and __ xp!', // header

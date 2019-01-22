@@ -1,4 +1,11 @@
-.hidden.menu {
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:700');
+
+        .josefin{
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .hidden.menu {
             display: none;
         }
 

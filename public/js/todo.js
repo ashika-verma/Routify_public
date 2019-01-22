@@ -26,8 +26,6 @@ function todoDOMObject(todoJSON, user) {
 }
 
 function checkboxClickedHandler() {
-    console.log(this.parentElement.parentElement.id);
-    console.log(this.checked);
     const data = {
         id: this.parentElement.parentElement.id,
         checked: this.checked
@@ -57,7 +55,6 @@ function submitTodoHandler() {
 
     post('/api/todo', data, todo => {
 
-        console.log(todo);
         //make new todo here
         const todosDiv = document.getElementById('todos');
 
@@ -120,7 +117,7 @@ Due: 1/19/2039
 function todoModal() {
     let todoID = this.parentElement.parentElement.id;
     document.getElementById(todoID).innerText;
-    document.getElementById('todo-modal').firstElementChild.firstElementChild.firstElementChild.value = document.getElementById(todoID).innerText;
+    document.getElementById('todo-modal-input').value = document.getElementById(todoID).innerText;
     $('#todo-modal')
         .modal({
             onDeny: function () {
@@ -131,11 +128,12 @@ function todoModal() {
                 post('/api/todoDeleted', data);
             },
             onApprove: function () {
-                const newCont = document.getElementById('todo-modal').firstElementChild.firstElementChild.firstElementChild.value;
+                const newCont = document.getElementById('todo-modal-input').value;
                 const data = {
                     id: todoID,
                     content: newCont,
                 };
+                document.getElementById(todoID).firstElementChild.childNodes[1].textContent = newCont;
                 post('/api/todoUpdated', data);
             }
         })

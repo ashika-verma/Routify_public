@@ -14,12 +14,24 @@
 
 <body>
 
-    <div class="clip clip-1"></div>
-    <div class="clip clip-2"></div>
-    <div class="clip clip-3"></div>
-    <div class="clip clip-4"></div>
-    <div class="clip clip-5"></div>
-    <div class="ui middle aligned center aligned grid">
+
+    <div id="press-any-key" class="ui middle aligned grid">
+        <div class="column">
+            <h3 id="typey-text" class="ui image header">
+
+            </h3>
+
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div class="clip clip-1 login"></div>
+    <div class="clip clip-2 login"></div>
+    <div class="clip clip-3 login"></div>
+    <div class="clip clip-4 login"></div>
+    <div class="clip clip-5 login"></div>
+    <div class="ui middle aligned center aligned grid login">
         <div class="column">
             <h1 class="ui image header">
                 Login
@@ -35,6 +47,7 @@
             </button>
 
         </div>
+
     </div>
 </body>
 
@@ -42,29 +55,52 @@
     crossorigin="anonymous"></script>
 <script src="/static2/dist/semantic.min.js"></script>
 <script src="/static/js/semantic-ui-alert.js"></script>
+
 <script>
     $(document)
         .ready(function () {
-            // fix menu when passed
-            $('.masthead')
-                .visibility({
-                    once: false,
-                    onBottomPassed: function () {
-                        $('.fixed.menu').transition('fade in');
-                    },
-                    onBottomPassedReverse: function () {
-                        $('.fixed.menu').transition('fade out');
-                    }
-                })
-                ;
-            //initialize dropdowns
-            $('.ui.dropdown')
-                .dropdown();
 
-            // create sidebar and attach to menu open
-            $('.ui.sidebar')
-                .sidebar('attach events', '.toc.item')
-                ;
+            $('.login').hide();
+
+
+            var i = 0;
+            var txt = 'Press any key to start. . .';
+            var speed = 50;
+            typeWriter();
+            function typeWriter() {
+                if (i < txt.length) {
+                    document.getElementById("typey-text").innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+                else if (i === txt.length) {
+                    document.getElementById("typey-text").innerHTML = txt + "|";
+                    i += 1;
+                    setTimeout(typeWriter, 500);
+                }
+                else {
+                    document.getElementById("typey-text").innerHTML = txt + " ";
+                    i -= 1;
+                    setTimeout(typeWriter, 500);
+                }
+            }
+            document.onkeypress = showLogin;
+            document.onclick = showLogin;
+            function showLogin(e) {
+                $('#press-any-key').fadeOut(1, function () {
+                    setTimeout(function () {
+                        $('.clip-1').fadeIn(700);
+                        $('.clip-2').fadeIn(700);
+
+                        $('.clip-3').fadeIn(700);
+                        $('.clip-4').fadeIn(700);
+                        $('.clip-5').fadeIn(700);
+                        $('.login').fadeIn(700);
+                    }, 500);
+
+                });
+
+            }
 
         })
         ;

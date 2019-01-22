@@ -41,7 +41,7 @@
                     <a class="toc item">
                         <i class="big sidebar icon"></i>
                     </a>
-                    <div class="header item">Routify</div>
+                    <div class="header item josefin">Routify</div>
                     <a class="active item">You</a>
                     <a class="item">Leaderboard</a>
                     <a class="item" href="/auth/google">Login</a>
@@ -221,14 +221,15 @@
 
         <!-- MODALS -->
         <div id="todo-modal" class="ui modal">
+            <i class="close icon"></i>
             <div class="header yellow">
                 <div class="ui transparent fluid input">
-                    <input type="text" placeholder="Edit Title..." value="Running away">
+                    <input id="todo-modal-input" type="text" placeholder="Edit Title..." value="Running away">
                 </div>
             </div>
             <div class="content yellow">
                 <h4>Date:</h4>
-                <div class="ui calendar" id="example2">
+                <div class="ui calendar" id="todo-calendar">
                     <div class="ui input left icon">
                         <i class="calendar icon"></i>
                         <input id="todo-modal-date" type="text" placeholder="Date">
@@ -236,9 +237,30 @@
                 </div>
             </div>
             <div class="actions yellow">
-                <div class="ui approve button">Save</div>
+                <div class="ui approve right labeled icon button">Save<i class="checkmark icon"></i></div>
+                <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
+            </div>
+        </div>
 
-                <div class="ui cancel red button">Delete</div>
+        <div id="longterm-modal" class="ui modal">
+            <i class="close icon"></i>
+            <div class="header green">
+                <div class="ui transparent fluid input">
+                    <input id="longterm-modal-input" type="text" placeholder="Edit Title..." value="Running away">
+                </div>
+            </div>
+            <div class="content green">
+                <h4>Date:</h4>
+                <div class="ui calendar" id="longterm-calendar">
+                    <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input id="longterm-modal-date" type="text" placeholder="Date">
+                    </div>
+                </div>
+            </div>
+            <div class="actions green">
+                <div class="ui approve right labeled icon button">Save<i class="checkmark icon"></i></div>
+                <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
             </div>
         </div>
 
@@ -287,7 +309,10 @@
 <script src="/static/js/reward.js"></script>
 <script src="/static/js/index.js"></script>
 <script>
-    $('#example2').calendar({
+    $('#todo-calendar').calendar({
+        type: 'date'
+    });
+    $('#longterm-calendar').calendar({
         type: 'date'
     });
 

@@ -138,6 +138,30 @@ router.post(
     }
 );
 
+router.post(
+    '/longtermModalUpdated',
+    function (req, res) {
+        LongTerm.findOne({ _id: req.body.id }, function (err, todo) {
+            //res.send(todo);
+            todo.text = req.body.content;
+
+            todo.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+        res.send({});
+    }
+);
+
+router.post(
+    '/longtermDeleted',
+    function (req, res) {
+        LongTerm.deleteOne({ _id: req.body.id }).exec();
+        res.send({});
+
+    }
+);
 
 //HABIT
 router.get('/habit', function (req, res) {
@@ -204,69 +228,5 @@ router.post(
     }
 );
 
-/*
 
-router.get('/user', function (req, res) {
-    User.findOne({ _id: req.query._id }, function (err, user) {
-        res.send(user);
-    });
-});
-
-router.get('/stories', function (req, res) {
-    Story.find({}, function (err, stories) {
-        res.send(stories);
-    });
-});
-
-router.post(
-    '/story',
-    connect.ensureLoggedIn(),
-    function (req, res) {
-        const newStory = new Story({
-            'creator_id': req.user._id,
-            'creator_name': req.user.name,
-            'content': req.body.content,
-        });
-
-
-
-        newStory.save(function (err, story) {
-
-            // configure socketio
-            if (err) console.log(err);
-        });
-
-        User.findOne({ _id: req.user._id }, function (err, user) {
-            user.last_post = req.body.content;
-            user.save();
-        });
-
-        res.send({});
-    }
-);
-
-router.get('/comment', function (req, res) {
-    Comment.find({ parent: req.query.parent }, function (err, comments) {
-        res.send(comments);
-    })
-});
-
-router.post(
-    '/comment',
-    connect.ensureLoggedIn(),
-    function (req, res) {
-        const newComment = new Comment({
-            'creator_id': req.user._id,
-            'creator_name': req.user.name,
-            'parent': req.body.parent,
-            'content': req.body.content,
-        });
-
-        newComment.save(function (err, comment) {
-            if (err) console.log(err);
-        });
-
-        res.send({});
-    }
-);*/
 module.exports = router;

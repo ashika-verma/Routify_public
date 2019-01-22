@@ -14,9 +14,13 @@ body {
  width: 100%;
  
 }
-.ui.grid{
+.ui.grid, #login{
     margin: 0px;
 }
+#typey-text{
+    text-align: left;
+}
+
 .clip{
     position: absolute;
     height:100%;
