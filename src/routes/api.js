@@ -228,5 +228,16 @@ router.post(
     }
 );
 
+//LEADERBOARD STUFF
+router.get('/leaderboard', function (req, res) {
+    User.find({}).sort({ xp: -1 }).limit(5).exec(
+        function (err, users) {
+
+            res.send(users)
+        }
+    );
+});
+
+
 
 module.exports = router;
