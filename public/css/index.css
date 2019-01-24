@@ -1,143 +1,144 @@
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:700');
 
-        .josefin{
-            font-family: 'Josefin Sans', sans-serif;
-        }
+.josefin{
+    font-family: 'Josefin Sans', sans-serif;
+}
 
-        .hidden.menu {
-            display: none;
-        }
+.hidden.menu {
+    display: none;
+}
 
-        .secondary.pointing.menu .toc.item {
-            display: none;
-        }
+.secondary.pointing.menu .toc.item {
+    display: none;
+}
 
-        svg {
-            height: 19px;
-            width: 19px;
-            margin-top: 9px;
-        }
+svg {
+    height: 19px;
+    width: 19px;
+    margin-top: 9px;
+}
 
-        .main.container {
-            padding: 2em 0em 7em;
-            padding-top: 2em;
-            padding-right: 0em;
-            padding-bottom: 7em;
-            padding-left: 0em;
-        }
-
-        .ui.celled.grid>.column:not(.row),
-        .ui.celled.grid>.row>.column {
-            -webkit-box-shadow: 0 0 0 0 #d4d4d5;
-            box-shadow: 0 0 0 0 #d4d4d5;
-        }
-
-        .ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
-            margin: 0px;
-        }
-
-        .ui.horizontal.label.right {
-            float: right
-        }
-        .ui.horizontal.right {
-            float: right
-        }
-
-        .ui.dropdown .menu>.item>.label.right {
-            float: right;
-            margin-right: 0;
-        }
-        .ui.label.ribbon{
-            font-size: 1.35rem;
-        }
-
-        .ui.menu .ui.dropdown .menu>.item.no-hover:hover{
-                background: rgba(0,0,0, 0)!important;
-                cursor: default;
-        }
-        .main .ui.secondary.pointing.menu .item{
-            padding: .5rem .3rem;
-        }
-        .main .ui.secondary.pointing.menu{
-            margin-bottom: -.6rem;
-        }
-        /*MISTAKES THAT NEED FIXING?*/
-        .masthead .ui.secondary.pointing.menu{
-            border-bottom: #fff;
-        }
-        body.pushable .pusher{
-            background-color:#fbfbfb
-        }
-        .ui.vertical.segment{
-            background: #fff
-        }
-        input[type=checkbox]:checked + label{
-            text-decoration: line-through;
-        }
-        
-
-        @media only screen and (max-width: 700px) {
-            .ui.fixed.menu {
-                display: none !important;
-            }
-
-            .masthead .secondary.pointing.menu .item:not(.mobile-none),
-            .masthead .secondary.pointing.menu .menu:not(.mobile-none) {
-                display: none;
-            }
+.main.container {
+    padding: 2em 0em 7em;
+    padding-top: 2em;
+    padding-right: 0em;
+    padding-bottom: 7em;
+    padding-left: 0em;
+}
 
 
-            .masthead .secondary.pointing.menu .menu .item.mobile-none {
-                display: block;
-            }
+.ui.celled.grid>.column:not(.row),
+.ui.celled.grid>.row>.column {
+    -webkit-box-shadow: 0 0 0 0 #d4d4d5;
+    box-shadow: 0 0 0 0 #d4d4d5;
+}
 
-            .mobile-none {
-                display: block;
-            }
+.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0px;
+}
 
-            .masthead .secondary.pointing.menu .toc.item {
-                display: block;
-            }
-        }
+.ui.horizontal.label.right {
+    float: right
+}
+.ui.horizontal.right {
+    float: right
+}
 
-        .ui.progress:last-child {
-            margin: 1.5em 0 0;
-        }
+.ui.dropdown .menu>.item>.label.right {
+    float: right;
+    margin-right: 0;
+}
+.ui.label.ribbon{
+    font-size: 1.35rem;
+}
 
-        .ui.modal>.actions.yellow{
-            background-color: #fbbd08
-        }
-        .ui.modal>.content.yellow{
-            background-color: #fcca39
-        }
-        .ui.modal>.header.yellow{
-            background-color: #fcca39
-        }
-        .ui.modal>.actions.green{
-            background-color: #21BA45
-        }
-        .ui.modal>.content.green{
-            background-color: #4dc76a
-        }
-        .ui.modal>.header.green{
-            background-color: #4dc76a
-        }
-        .ui.modal>.actions.purple{
-            background-color: #A333C8
-        }
-        .ui.modal>.content.purple{
-            background-color: #b55cd3
-        }
-        .ui.modal>.header.purple{
-            background-color: #b55cd3
-        }
-        .ui.modal>.actions.blue{
-            background-color: #2185D0
-        }
-        .ui.modal>.content.blue{
-            background-color: #4d9dd9
-        }
-        .ui.modal>.header.blue{
-            background-color: #4d9dd9
-        }
+.ui.menu .ui.dropdown .menu>.item.no-hover:hover{
+        background: rgba(0,0,0, 0)!important;
+        cursor: default;
+}
+.main .ui.secondary.pointing.menu .item{
+    padding: .5rem .3rem;
+}
+.main .ui.secondary.pointing.menu{
+    margin-bottom: -.6rem;
+}
+/*MISTAKES THAT NEED FIXING?*/
+.masthead .ui.secondary.pointing.menu{
+    border-bottom: #fff;
+}
+body.pushable .pusher{
+    background-color:#fbfbfb
+}
+.ui.vertical.segment{
+    background: #fff
+}
+input[type=checkbox]:checked + label{
+    text-decoration: line-through;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .ui.fixed.menu {
+        display: none !important;
+    }
+
+    .masthead .secondary.pointing.menu .item:not(.mobile-none),
+    .masthead .secondary.pointing.menu .menu:not(.mobile-none) {
+        display: none;
+    }
+
+
+    .masthead .secondary.pointing.menu .menu .item.mobile-none {
+        display: block;
+    }
+
+    .mobile-none {
+        display: block;
+    }
+
+    .masthead .secondary.pointing.menu .toc.item {
+        display: block;
+    }
+}
+
+.ui.progress:last-child {
+    margin: 1.5em 0 0;
+}
+
+.ui.modal>.actions.yellow{
+    background-color: #fbbd08
+}
+.ui.modal>.content.yellow{
+    background-color: #fcca39
+}
+.ui.modal>.header.yellow{
+    background-color: #fcca39
+}
+.ui.modal>.actions.green{
+    background-color: #21BA45
+}
+.ui.modal>.content.green{
+    background-color: #4dc76a
+}
+.ui.modal>.header.green{
+    background-color: #4dc76a
+}
+.ui.modal>.actions.purple{
+    background-color: #A333C8
+}
+.ui.modal>.content.purple{
+    background-color: #b55cd3
+}
+.ui.modal>.header.purple{
+    background-color: #b55cd3
+}
+.ui.modal>.actions.blue{
+    background-color: #2185D0
+}
+.ui.modal>.content.blue{
+    background-color: #4d9dd9
+}
+.ui.modal>.header.blue{
+    background-color: #4d9dd9
+}

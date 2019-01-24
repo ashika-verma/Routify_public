@@ -30,13 +30,15 @@ router.get('/whoami', function (req, res) {
 
 //TODO
 router.get('/todo', function (req, res) {
-    Todo.find({}, function (err, todos) {
+    Todo.find({ creator_id: req.user }, function (err, todos) {
         res.send(todos);
     });
+
 });
 
 router.post(
     '/todo',
+    connect.ensureLoggedIn(),
     function (req, res) {
         const newTodo = new Todo({
             'creator_id': req.user._id,
@@ -55,6 +57,7 @@ router.post(
 
 router.post(
     '/todoChecked',
+    connect.ensureLoggedIn(),
     function (req, res) {
         Todo.findOne({ _id: req.body.id }, function (err, todo) {
             //res.send(todo);
@@ -71,6 +74,7 @@ router.post(
 );
 router.post(
     '/todoUpdated',
+    connect.ensureLoggedIn(),
     function (req, res) {
         Todo.findOne({ _id: req.body.id }, function (err, todo) {
             //res.send(todo);
@@ -88,6 +92,7 @@ router.post(
 
 router.post(
     '/todoDeleted',
+    connect.ensureLoggedIn(),
     function (req, res) {
         Todo.deleteOne({ _id: req.body.id }).exec();
         res.send({});
@@ -98,13 +103,14 @@ router.post(
 
 //LONGTERM
 router.get('/longterm', function (req, res) {
-    LongTerm.find({}, function (err, todos) {
+    LongTerm.find({ creator_id: req.user }, function (err, todos) {
         res.send(todos);
     });
 });
 
 router.post(
     '/longterm',
+    connect.ensureLoggedIn(),
     function (req, res) {
         const newLongTerm = new LongTerm({
             'creator_id': req.user._id,
@@ -123,11 +129,11 @@ router.post(
 
 router.post(
     '/longtermUpdated',
+    connect.ensureLoggedIn(),
     function (req, res) {
         LongTerm.findOne({ _id: req.body.id }, function (err, longterm) {
             //res.send(todo);
             longterm.percentage = req.body.percentage;
-
             longterm.save(function (err) {
                 if (err) console.log(err);
             });
@@ -140,6 +146,7 @@ router.post(
 
 router.post(
     '/longtermModalUpdated',
+    connect.ensureLoggedIn(),
     function (req, res) {
         LongTerm.findOne({ _id: req.body.id }, function (err, todo) {
             //res.send(todo);
@@ -156,6 +163,7 @@ router.post(
 
 router.post(
     '/longtermDeleted',
+    connect.ensureLoggedIn(),
     function (req, res) {
         LongTerm.deleteOne({ _id: req.body.id }).exec();
         res.send({});
@@ -165,13 +173,15 @@ router.post(
 
 //HABIT
 router.get('/habit', function (req, res) {
-    Habit.find({}, function (err, todos) {
+
+    Habit.find({ creator_id: req.user }, function (err, todos) {
         res.send(todos);
     });
 });
 
 router.post(
     '/habit',
+    connect.ensureLoggedIn(),
     function (req, res) {
         const newHabit = new Habit({
             'creator_id': req.user._id,
@@ -189,6 +199,7 @@ router.post(
 );
 router.post(
     '/habitUpdated',
+    connect.ensureLoggedIn(),
     function (req, res) {
         Habit.findOne({ _id: req.body.id }, function (err, habit) {
             //res.send(todo);
@@ -206,13 +217,14 @@ router.post(
 
 //REWARD
 router.get('/reward', function (req, res) {
-    Reward.find({}, function (err, rewards) {
+    Reward.find({ creator_id: req.user }, function (err, rewards) {
         res.send(rewards);
     });
 });
 
 router.post(
     '/reward',
+    connect.ensureLoggedIn(),
     function (req, res) {
         const newReward = new Reward({
             'creator_id': req.user._id,

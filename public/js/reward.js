@@ -91,12 +91,11 @@ function renderRewards(user) {
 
 
     const rewardsDiv = document.getElementById('rewards');
-    get('/api/reward', {}, function (rewardArr) {
+    get('/api/reward', { "user": user._id }, function (rewardArr) {
         for (let i = 0; i < rewardArr.length; i++) {
             const currentReward = rewardArr[i];
-            if (currentReward.creator_id == user._id) {
-                rewardsDiv.prepend(rewardDOMObject(currentReward, user));
-            }
+            rewardsDiv.prepend(rewardDOMObject(currentReward, user));
+
 
         }
     });

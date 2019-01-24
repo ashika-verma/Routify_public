@@ -4,7 +4,14 @@ const router = express.Router();
 
 // public endpoints
 router.get('/', function (req, res, next) {
+    // if (req.user) {
+    //res.redirect("/user/" + req.user._id);
     res.sendFile('index.html', { root: 'src/views' });
+    //   } else {
+    //     res.sendFile('home.html', { root: 'src/views' });
+    //}
+
+
 });
 
 router.get('/home', function (req, res, next) {
@@ -16,7 +23,13 @@ router.get('/u/profile', function (req, res) {
 });
 
 router.get('/leaderboard', function (req, res) {
+
+    // if (req.user) {
+    //res.redirect("/user/" + req.user._id);
     res.sendFile('leaderboard.html', { root: 'src/views' });
+    //  } else {
+    //    res.sendFile('home.html', { root: 'src/views' });
+    //}
 });
 
 module.exports = router;

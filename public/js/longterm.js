@@ -118,12 +118,11 @@ function renderLongterms(user) {
 
 
     const longtermsDiv = document.getElementById('longterms');
-    get('/api/longterm', {}, function (longtermArr) {
+    get('/api/longterm', { "user": user._id }, function (longtermArr) {
         for (let i = 0; i < longtermArr.length; i++) {
             const currentLongterm = longtermArr[i];
-            if (currentLongterm.creator_id == user._id) {
-                longtermsDiv.prepend(longtermDOMObject(currentLongterm, user));
-            }
+            longtermsDiv.prepend(longtermDOMObject(currentLongterm, user));
+
 
         }
     });

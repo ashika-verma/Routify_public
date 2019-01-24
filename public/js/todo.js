@@ -92,13 +92,13 @@ function renderTodos(user) {
 
 
     const todosDiv = document.getElementById('todos');
-    get('/api/todo', {}, function (todoArr) {
+    get('/api/todo', { "user": user._id }, function (todoArr) {
+        console.log(todoArr);
         for (let i = 0; i < todoArr.length; i++) {
             const currentTodo = todoArr[i];
-            if (currentTodo.creator_id == user._id) {
-                todosDiv.prepend(todoDOMObject(currentTodo, user));
-            }
+            todosDiv.prepend(todoDOMObject(currentTodo, user));
         }
+
 
     });
 

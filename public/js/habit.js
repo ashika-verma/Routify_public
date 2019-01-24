@@ -139,12 +139,11 @@ function renderHabits(user) {
 
 
     const habitsDiv = document.getElementById('habits');
-    get('/api/habit', {}, function (habitArr) {
+    get('/api/habit', { "user": user._id }, function (habitArr) {
         for (let i = 0; i < habitArr.length; i++) {
             const currentHabit = habitArr[i];
-            if (currentHabit.creator_id == user._id) {
-                habitsDiv.prepend(habitDOMObject(currentHabit, user));
-            }
+            habitsDiv.prepend(habitDOMObject(currentHabit, user));
+
 
         }
     });
