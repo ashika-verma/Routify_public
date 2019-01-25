@@ -96,10 +96,9 @@ function renderTodos(user) {
         console.log(todoArr);
         for (let i = 0; i < todoArr.length; i++) {
             const currentTodo = todoArr[i];
+
             todosDiv.prepend(todoDOMObject(currentTodo, user));
         }
-
-
     });
 
 

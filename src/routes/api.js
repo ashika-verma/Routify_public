@@ -286,26 +286,51 @@ router.post(
     '/joinGroup',
     connect.ensureLoggedIn(),
     function (req, res) {
+        // console.log(req);
         Group.findOne({ code: req.body.code }, function (err, group) {
+            console.log(req.body.code);
+            console.log(group);
 
-            let size = group.members.size;
-
-            group.members.addToSet(req.user._id);
-            if (group.members.size == size) {
+            // let size = group.members.size;
+            //       group.members.addToSet(req.user._id);
+            if (group.members.includes(req.user._id)) {
                 console.log("YOu're already a memeber");
                 res.send({ "already_member": true });
             } else {
+                group.members.push(req.user._id);
                 group.save(function (err) {
                     if (err) console.log(err);
                 });
                 res.send({ "already_member": false });
             }
-
-
         });
-
     }
 );
+
+router.post(
+    '/leaveGroup',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Group.findOne({ _id: req.body.group_id }, function (err, group) {
+            group.members.pull(req.user._id);
+            group.save(function (err) {
+                if (err) console.log(err);
+            });
+            res.send({});
+
+        });
+    }
+);
+router.get('/getGroups', function (req, res) {
+    Group.find({ members: req.user._id }, function (err, groups) {
+        res.send(groups);
+    });
+});
+router.get('/getUserInfo', function (req, res) {
+    User.findOne({ _id: req.query.member_id }, function (err, User) {
+        res.send(User);
+    });
+});
 
 
 module.exports = router;
