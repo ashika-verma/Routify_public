@@ -78,12 +78,16 @@
         .ui.celled.grid>.row{
             box-shadow: none;
         }
+        .ui.cards>.card>.extra a.red:not(.ui):hover {
+    color: red;
+}
+
         @media only screen and (max-width: 767px){
             .ui.container {
                 width: 100% !important;
             }
         }
-            
+    
         
 
         @media only screen and (max-width: 700px) {
