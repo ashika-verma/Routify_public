@@ -8,6 +8,7 @@ const Todo = require('../models/todo');
 const LongTerm = require('../models/longterm');
 const Habit = require('../models/habit');
 const Reward = require('../models/reward');
+const Group = require('../models/group');
 
 // const Story = require('../models/story');
 // const Comment = require('../models/comment');
@@ -250,6 +251,61 @@ router.get('/leaderboard', function (req, res) {
     );
 });
 
+
+//GROUP STUFF
+router.post(
+    '/newGroup',
+    connect.ensureLoggedIn(),
+
+    function (req, res) {
+        let code = Math.round(100000 + Math.random() * 900000);
+        let code_string = "" + code;
+
+        // Group.find({ code: code_string }, function (err, groups) {
+        //     if (err) {
+        //         //if doesn't exist, do things
+        //     }
+        //     res.send(rewards);
+        // });
+        const newGroup = new Group({
+            'name': req.body.group_name,
+            'color': req.body.color,
+            'code': code_string,
+            'members': [req.user._id]
+        });
+        newGroup.save(function (err, habit) {
+
+            // configure socketio
+            if (err) console.log(err);
+            res.send({ "code": code_string });
+        });
+
+    }
+);
+router.post(
+    '/joinGroup',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Group.findOne({ code: req.body.code }, function (err, group) {
+
+            let size = group.members.size;
+
+            group.members.addToSet(req.user._id);
+            if (group.members.size == size) {
+                console.log("YOu're already a memeber");
+                res.send({ "already_member": true });
+            } else {
+                group.save(function (err) {
+                    if (err) console.log(err);
+                });
+                res.send({ "already_member": false });
+            }
+
+
+        });
+
+    }
+);
 
 
 module.exports = router;

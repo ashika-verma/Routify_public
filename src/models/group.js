@@ -1,11 +1,13 @@
 // import node modules
 const mongoose = require('mongoose');
 
+
 // define a schema
 const GroupModelSchema = new mongoose.Schema({
     name: String,
     code: String,
-    members: [UserSchema]
+    members: [String],
+    color: String
 });
 
 // compile model from schema

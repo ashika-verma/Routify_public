@@ -117,10 +117,10 @@
                         <div class="ui secondary pointing menu" style="border-bottom: none">
                             <h3 class="item">Groups</h3>
                             <div class="right menu">
-                                <a class="ui purple item">
+                                <a class="ui purple item" onclick="joinGroupModal()">
                                     Join Group
                                 </a>
-                                <a class="ui purple item">
+                                <a class="ui purple item" onclick="createGroupModal()">
                                     Create Group
                                 </a>
                             </div>
@@ -233,6 +233,60 @@
         </div>
 
 
+
+
+        <!-- MODAL!!! -->
+        <div id="create-group-modal" class="ui small coupled modal">
+            <i class="close icon"></i>
+            <div class="header yellow">
+                Create a new group!
+            </div>
+            <div class="content yellow">
+                <div class="ui fluid input">
+                    <input id="create-group-input" type="text" placeholder="Enter Group Name...">
+                </div>
+            </div>
+            <div class="actions yellow">
+                <div class="ui approve right labeled icon button">Create<i class="checkmark icon"></i></div>
+                <div class="ui cancel red right basic button">Cancel</div>
+            </div>
+        </div>
+
+        <div id="new-group-modal" class="ui small coupled modal">
+            <i class="close icon"></i>
+            <div class="header yellow">
+                Here is your group code!
+            </div>
+            <div class="content yellow">
+                <div class="ui huge input">
+                    <input type="text" placeholder="" value="849279">
+                    <button class="ui icon button">
+                        <i class="copy icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="actions yellow">
+                <div class="ui approve right button">Okay</div>
+            </div>
+        </div>
+        <div id="join-group-modal" class="ui small modal">
+            <i class="close icon"></i>
+            <div class="header yellow">
+                Join your friends!
+            </div>
+            <div class="content yellow">
+                <div class="ui fluid input">
+                    <input id="join-group-input" type="text" placeholder="Enter Code...">
+                </div>
+            </div>
+            <div class="actions yellow">
+                <div class="ui approve right labeled icon button">Join<i class="checkmark icon"></i></div>
+                <div class="ui cancel red right basic button">Cancel</div>
+            </div>
+        </div>
+
+
+
     </body>
 </body>
 
@@ -270,6 +324,6 @@
         ;
 </script>
 <script src="/static/js/api.js"></script>
-<script src="/static/js/leaderboard.js"></script>
+<script src="/static/js/groups.js"></script>
 
 </html>
