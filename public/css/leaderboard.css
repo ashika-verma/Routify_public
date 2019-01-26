@@ -154,6 +154,16 @@ color: red;
 .ui.modal>.header.blue{
     background-color: #4d9dd9
 }
+.ui.modal>.actions.blue{
+    background-color: #2185D0
+}
+.ui.modal>.content.blue{
+    background-color: #4d9dd9
+}
+.ui.modal>.header.blue{
+    background-color: #4d9dd9
+}
+
 .ui.card>.fixed-height.content, .ui.cards>.card>.fixed-height.content{
     height: 0px;
     min-height: 64px;

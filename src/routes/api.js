@@ -311,7 +311,9 @@ router.post(
     '/leaveGroup',
     connect.ensureLoggedIn(),
     function (req, res) {
+        console.log(req.query.group_id);
         Group.findOne({ _id: req.body.group_id }, function (err, group) {
+            console.log(group.members);
             group.members.pull(req.user._id);
             group.save(function (err) {
                 if (err) console.log(err);

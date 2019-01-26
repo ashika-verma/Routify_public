@@ -4,6 +4,21 @@ function rewardDOMObject(rewardJSON, user) {
     //     <i class="ui horizontal right">10</i>
     //     <i class="large icon ui horizontal right"><img src="/static/css/img/two-coins.svg"></i>
     // </div>
+
+
+
+
+    {/* <div id="5c4a98395507ba30f0c8724f" class="ui compact segment ">
+        <div class="ui grid">
+            <div class="column twelve wide">sob in different corners of the room</div>
+            <div class="column four wide right floated">
+                <i class="ui horizontal right">10</i>
+                <i class="large icon ui horizontal right">
+                    <img src="/static/css/img/two-coins.svg">
+                </i>
+            </div>
+        </div>
+    </div> */}
     console.log(rewardJSON);
     const segment = document.createElement('div');
     segment.setAttribute('id', rewardJSON._id);

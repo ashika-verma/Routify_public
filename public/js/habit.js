@@ -143,8 +143,6 @@ function renderHabits(user) {
         for (let i = 0; i < habitArr.length; i++) {
             const currentHabit = habitArr[i];
             habitsDiv.prepend(habitDOMObject(currentHabit, user));
-
-
         }
     });
 }
