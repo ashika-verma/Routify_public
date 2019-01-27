@@ -288,21 +288,24 @@ router.post(
     function (req, res) {
         // console.log(req);
         Group.findOne({ code: req.body.code }, function (err, group) {
+
             console.log(req.body.code);
             console.log(group);
+            if (group !== null) {
 
-            // let size = group.members.size;
-            //       group.members.addToSet(req.user._id);
-            if (group.members.includes(req.user._id)) {
-                console.log("YOu're already a memeber");
-                res.send({ "already_member": true });
-            } else {
-                group.members.push(req.user._id);
-                group.save(function (err) {
-                    if (err) console.log(err);
-                });
-                res.send({ "already_member": false });
+                //       group.members.addToSet(req.user._id);
+                if (group.members.includes(req.user._id)) {
+                    console.log("YOu're already a memeber");
+                    res.send({ "already_member": true });
+                } else {
+                    group.members.push(req.user._id);
+                    group.save(function (err) {
+                        if (err) console.log(err);
+                    });
+                    res.send({ "already_member": false });
+                }
             }
+            // let size = group.members.size;
         });
     }
 );
