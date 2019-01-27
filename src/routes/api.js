@@ -335,4 +335,34 @@ router.get('/getUserInfo', function (req, res) {
 });
 
 
+
+router.get('/getSortedMembers', function (req, res) {
+
+    Group.findOne({ _id: req.query.group_id }, function (err, group) {
+        //console.log(group);
+        members = group.members;
+        console.log(members);
+        let memberUserList = [];
+        for (i = 0; i < members.length; i++) {
+            console.log('acual: ' + i);
+            please(i);
+            User.findOne({ _id: members[i] }, function (err, boi) {
+                memberUserList.push(boi);
+                console.log('async: ' + i);
+                if (memberUserList.length === members.length) {
+                    memberUserList.sort(function (a, b) {
+                        return b.xp - a.xp;
+                    })
+                    console.log("im list: " + memberUserList)
+                    res.send(memberUserList);
+                }
+            });
+        }
+    });
+});
+function please(i) {
+    console.log("hi im i: " + i);
+}
+
+
 module.exports = router;
