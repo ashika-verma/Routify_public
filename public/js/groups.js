@@ -19,6 +19,9 @@ function renderGroups(user) {
             groupDiv.innerHTML = innerHTMLBoi;
             bigGroupDiv.append(groupDiv);
 
+
+
+
             //appending stuff
             for (j in currentGroup.members) {
                 let memberID = currentGroup.members[j];
@@ -96,4 +99,16 @@ function joinGroupModal() {
         .modal('show');
 }
 
+function leaveGroup() {
+    const group = this.parentElement.parentElement;
+    const group_id = this.parentElement.id;
+    $('#leave-group-modal')
+        .modal({
+            onApprove: function () {
+                post('/api/leaveGroup', { "group_id": group_id });
+                group.outerHTML = "";
+            }
+        })
+        .modal('show');
+}
 
