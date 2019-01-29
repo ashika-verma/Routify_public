@@ -94,6 +94,7 @@ function joinGroupModal() {
                         });
                     }
                 });
+                document.getElementById('join-group-input').value = "";
             }
         })
         .modal('show');

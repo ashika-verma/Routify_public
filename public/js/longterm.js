@@ -1,58 +1,52 @@
 function longtermDOMObject(longtermJSON, user) {
+    const longtermsDiv = document.getElementById('longterms');
+
+    // <div class="ui compact segment"> ~
+
+    //     <div class="ui compact segment"> ~
+    //         <div class="ui grid">~
+    //             <div class="left aligned ten wide column">~
+    //                 Left floated right aligned column~
+    //                                         </div>~
+    //             <div class="right aligned middle aligned six wide column">~
+    //                 <div class="ui green horizontal label">87%</div>~
+    //             </div>~
+    //         </div>~
+
+    //     </div>~
+    //     <div class="ui slidecontainer">
+    //         <input type="range" min="0" max="100" value="58" class="slider" id="myRange">
+    //      </div>
+    //</div>        ~
     const segment = document.createElement('div');
     segment.setAttribute('id', longtermJSON._id);
     segment.className = 'ui compact segment';
 
-    const innerSegment = document.createElement('div');
-    innerSegment.className = 'ui compact segment';
-    innerSegment.innerText = longtermJSON.text;
-    innerSegment.onclick = longtermModal;
+    let innerBoi = '<div class="ui compact segment"><div class="ui grid"><div class="left aligned ten wide column">' + longtermJSON.text;
+    innerBoi += '</div>';
 
-    const label = document.createElement('div');
+    innerBoi += '<div class="right aligned middle aligned six wide column">';
     if (longtermJSON.percentage > 0) {
-        label.className = 'ui green horizontal label right';
+        innerBoi += '<div class="ui green horizontal label">';
     } else {
-        label.className = 'ui grey horizontal label right';
+        innerBoi += '<div class="ui grey horizontal label">';
     }
-    label.innerText = longtermJSON.percentage + "%";
+    innerBoi += longtermJSON.percentage + '%</div></div></div></div>';
+    innerBoi += '<div class="ui slidecontainer"><input type="range" min="0" max="100" value="' + longtermJSON.percentage + '" class="slider" id="range-' + longtermJSON._id + '"></div>'
+
+    segment.innerHTML = innerBoi;
+    longtermsDiv.prepend(segment);
 
 
-    const slidecontainer = document.createElement('div');
-    slidecontainer.className = 'ui slidecontainer';
-
-
-
-    const input = document.createElement('input');
-    input.type = "range";
-    input.min = 0;
-    input.max = 100;
-    input.value = longtermJSON.percentage;
+    console.log('range-' + longtermJSON._id);
+    let input = document.getElementById('range-' + longtermJSON._id);
     input.onchange = onLongtermSlideHandler;
     input.oninput = slideyBoySlides;
-    input.className = "slider";
-
-    slidecontainer.appendChild(input);
-    innerSegment.appendChild(label);
-    segment.appendChild(innerSegment);
-    segment.appendChild(slidecontainer);
-
-
-
-
-
+    segment.firstElementChild.firstElementChild.firstElementChild.onclick = longtermModal;
 
     if (user._id !== undefined) {
         //if the user exists
     }
-    return segment;
-    // <div class="ui compact segment">
-    //     <div class="ui compact segment">work on book
-    //           <div class="ui green horizontal label right">58%</div>
-    //     </div>
-    //     <div class="ui slidecontainer">
-    //         <input type="range" min="1" max="100" value="58" class="slider" id="myRange">
-    //     </div>
-    //</div>
 }
 
 
@@ -68,46 +62,25 @@ function submitLongtermHandler() {
 
     post('/api/longterm', data, longterm => {
 
-        //make new longterm here
-        const longtermsDiv = document.getElementById('longterms');
+        get('/api/whoami', {}, function (user) {
+            const longtermsDiv = document.getElementById('longterms');
+            renderNewLongterms(user)
+            document.getElementById("longterm-text-input").value = "";
+        });
 
-        const segment = document.createElement('div');
-        segment.setAttribute('id', longterm.id);
-        segment.className = 'ui compact segment';
-
-        const innerSegment = document.createElement('div');
-        innerSegment.className = 'ui compact segment';
-        innerSegment.innerText = newLongtermInput.value;
-        innerSegment.onclick = longtermModal;
-
-        const label = document.createElement('div');
-        label.className = 'ui grey horizontal label right';
-        label.innerText = "0%";
-
-
-        const slidecontainer = document.createElement('div');
-        slidecontainer.className = 'ui slidecontainer';
-
-
-
-        const input = document.createElement('input');
-        input.type = "range";
-        input.min = 0;
-        input.max = 100;
-        input.value = 0;
-        input.onchange = onLongtermSlideHandler;
-        input.oninput = slideyBoySlides;
-        input.className = "slider";
-
-        slidecontainer.appendChild(input);
-        innerSegment.appendChild(label);
-        segment.appendChild(innerSegment);
-        segment.appendChild(slidecontainer);
-
-        longtermsDiv.prepend(segment);
-        newLongtermInput.value = '';
     });
 
+}
+
+function renderNewLongterms(user) {
+    if (user._id !== undefined) {
+        console.log("you have a user!");
+    }
+
+    get('/api/longterm', { "user": user._id }, function (longtermArr) {
+        const currentLongterm = longtermArr[longtermArr.length - 1];
+        longtermDOMObject(currentLongterm, user);
+    });
 }
 
 
@@ -117,13 +90,12 @@ function renderLongterms(user) {
     }
 
 
-    const longtermsDiv = document.getElementById('longterms');
+    //const longtermsDiv = document.getElementById('longterms');
     get('/api/longterm', { "user": user._id }, function (longtermArr) {
         for (let i = 0; i < longtermArr.length; i++) {
             const currentLongterm = longtermArr[i];
-            longtermsDiv.prepend(longtermDOMObject(currentLongterm, user));
-
-
+            //longtermsDiv.prepend(longtermDOMObject(currentLongterm, user));
+            longtermDOMObject(currentLongterm, user);
         }
     });
 }
@@ -156,21 +128,29 @@ function onLongtermSlideHandler() {
 
 //updates label and nothing else
 function slideyBoySlides() {
-    let label = this.parentElement.parentElement.firstElementChild.firstElementChild;
+    let label = this.parentElement.parentElement.firstElementChild.firstElementChild.lastElementChild.firstElementChild;
+
     label.innerText = this.value + "%";
-    if (this.value > 0) {
+    label.classList.remove("green");
+    label.classList.remove("orange");
+    label.classList.remove("olive");
+    label.classList.remove("grey");
+    if (this.value > 90) {
         label.classList.add("green");
-        label.classList.remove("grey");
+    } else if (this.value > 50) {
+        label.classList.add("olive");
+    } else if (this.value > 0) {
+        label.classList.add("orange");
     } else {
         label.classList.add("grey");
-        label.classList.remove("green");
     }
 }
 function longtermModal() {
-    let longtermID = this.parentElement.id;
+    let longtermID = this.parentElement.parentElement.parentElement.id;
     document.getElementById(longtermID).textContent;
+    let savethis = this;
     //childNodes[0].nodeValue
-    document.getElementById('longterm-modal-input').value = document.getElementById(longtermID).firstElementChild.childNodes[0].nodeValue;
+    document.getElementById('longterm-modal-input').value = this.textContent;
     $('#longterm-modal')
         .modal({
             onDeny: function () {
@@ -186,7 +166,8 @@ function longtermModal() {
                     id: longtermID,
                     content: newCont,
                 };
-                document.getElementById(longtermID).firstElementChild.childNodes[0].nodeValue = newCont;
+                console.log(this.textContent);
+                savethis.textContent = newCont;
                 post('/api/longtermModalUpdated', data);
             }
         })

@@ -1,0 +1,26 @@
+Novice -------- 13 tasks
+Neophyte ------ 21 tasks
+Initiate ------ 34 tasks
+Adept --------- 55 tasks
+Mage ---------- 89 tasks
+Master --------144 tasks
+Headmaster-----233 tasks
+Grand Sorceror-377 tasks
+Supreme Wizard-610 tasks
+Archmage-------987 tasks
+
+1
+1
+2
+3
+5
+8
+
+13
+21
+34
+55
+89
+144
+233
+377

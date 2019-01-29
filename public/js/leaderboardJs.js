@@ -44,15 +44,15 @@ function renderLeaderboards(user) {
 
     get('/api/getGroups', { "user": user._id }, function (groupArr) {
         const leaderboardDiv = document.getElementById('renderLeaderboards');
+        console.log(groupArr);
         for (j in groupArr) {
-            // let currentGroup = groupArr[j];
 
             get('/api/getSortedMembers', { "group_id": groupArr[j]._id }, function (memberArr) {
                 console.log(memberArr);
                 console.log(j);
                 let members;
                 const leaderboard = document.createElement('div');
-                leaderboard.classList = 'four wide computer column';
+                leaderboard.classList = 'eight wide computer column';
 
                 //this doesn't work
                 if (j === 0) {

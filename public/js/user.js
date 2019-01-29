@@ -16,8 +16,33 @@ function renderUserInfo(user) {
         //initialize dropdowns
         $('.ui.dropdown')
             .dropdown();
-
-        document.getElementById('xp-bar').value = user.xp;
+        $('#xp-bar').progress({
+            percent: parseInt(user.xp)
+        });
+        $('#health-bar').progress({
+            percent: parseInt(user.health)
+        });
+        console.log(typeof user.health)
+        $('#gold-bar').progress({
+            percent: parseInt(user.gold)
+        });
+        console.log('i refuse to work;');
     }
+
+
+}
+document.getElementById('user_dropdown').onclick = function () {
+    get('/api/whoami', {}, function (user) {
+        console.log('whooo')
+        $('#xp-bar').progress({
+            percent: user.xp
+        });
+        $('#health-bar').progress({
+            percent: user.health
+        });
+        $('#gold-bar').progress({
+            percent: user.gold
+        });
+    });
 
 }

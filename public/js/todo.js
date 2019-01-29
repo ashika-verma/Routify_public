@@ -36,12 +36,19 @@ function checkboxClickedHandler() {
             text: 'You may now log-in with the username you have chosen', // Text
             bgcolor: '#19c3aa', // background-color
             textcolor: '#fff', // color
-            position: 'top-right',// position . top And bottom ||  left / center / right
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
             time: 3, // time
         })
     }
-    post('/api/todoChecked', data);
+
+    post('/api/todoChecked', data, function () {
+        get('/api/whoami', {}, function (user) {
+            console.log(user);
+            renderUserInfo(user);
+        });
+    });
+
 }
 
 function submitTodoHandler() {
@@ -96,8 +103,12 @@ function renderTodos(user) {
         console.log(todoArr);
         for (let i = 0; i < todoArr.length; i++) {
             const currentTodo = todoArr[i];
+            if (currentTodo.complete) {
+                todosDiv.append(todoDOMObject(currentTodo, user));
+            } else {
+                todosDiv.prepend(todoDOMObject(currentTodo, user));
+            }
 
-            todosDiv.prepend(todoDOMObject(currentTodo, user));
         }
     });
 
