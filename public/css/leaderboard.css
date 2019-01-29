@@ -186,3 +186,6 @@ color: red;
     background-repeat: no-repeat;
     margin: 0 10px
 }
+.ui.vertical.inverted.sidebar.menu.left.uncover.visible .item{
+    font-size: 1.3em;
+}

@@ -153,3 +153,6 @@ input[type=checkbox]:checked + label{
     background-repeat: no-repeat;
     margin: 0 10px
 }
+.ui.vertical.inverted.teal.sidebar.menu.left.uncover.visible .item{
+    font-size: 1.3em;
+}
