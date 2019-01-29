@@ -229,6 +229,31 @@ router.post(
         res.send({});
     }
 );
+router.post(
+    '/habitDeleted',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Habit.deleteOne({ _id: req.body.id }).exec();
+        res.send({});
+
+    }
+);
+router.post(
+    '/habitModalUpdated',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Habit.findOne({ _id: req.body.id }, function (err, todo) {
+            //res.send(todo);
+            todo.text = req.body.content;
+
+            todo.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+        res.send({});
+    }
+);
 
 //REWARD
 router.get('/reward', function (req, res) {

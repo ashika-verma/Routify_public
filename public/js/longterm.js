@@ -168,7 +168,7 @@ function longtermModal() {
                 };
                 console.log(this.textContent);
                 savethis.textContent = newCont;
-                post('/api/longtermModalUpdated', data);
+                post('/api/habitModalUpdated', data);
             }
         })
         .modal('show');
