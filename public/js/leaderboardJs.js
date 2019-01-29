@@ -59,7 +59,7 @@ function renderLeaderboards(user) {
                 }
                 let innerBoi = '<h3 style="padding-left:10px; margin-bottom:-7px">' + oof.groupName + '</h3>';
                 innerBoi += '<div class="ui segments">';
-                innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="eleven wide column">Name</div><div class="two wide column">xp:</div></div></div></div>'
+                innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="nine wide column">Name</div><div class="four wide column">xp:</div></div></div></div>'
                 //insert for loop here
                 for (i in memberArr) {
                     let type = "teal tertiary";
@@ -74,8 +74,8 @@ function renderLeaderboards(user) {
                     }
                     innerBoi += '<div class="ui ' + type + ' inverted segment"><div class="ui container" ><div class="ui grid">';
                     innerBoi += '<div class="three wide column">#' + rank + '</div>';
-                    innerBoi += '<div class="eleven wide column">' + name + '</div>';
-                    innerBoi += '<div class="two wide column ">' + xp + '</div>';
+                    innerBoi += '<div class="nine wide column">' + name + '</div>';
+                    innerBoi += '<div class="four wide column ">' + xp + '</div>';
                     innerBoi += '</div></div></div>'
                     //end for loop here
                 }
@@ -104,7 +104,7 @@ function renderOverallLeaderboards(user) {
         }
 
         let innerBoi = '<div class="ui segments">';
-        innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="eleven wide column">Name</div><div class="two wide column">xp:</div></div></div></div>'
+        innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="nine wide column">Name</div><div class="four wide column">xp:</div></div></div></div>'
         //insert for loop here
         for (i in memberArr) {
             let type = "teal tertiary";
@@ -119,8 +119,8 @@ function renderOverallLeaderboards(user) {
             }
             innerBoi += '<div class="ui ' + type + ' inverted segment"><div class="ui container" ><div class="ui grid">';
             innerBoi += '<div class="three wide column">#' + rank + '</div>';
-            innerBoi += '<div class="eleven wide column">' + name + '</div>';
-            innerBoi += '<div class="two wide column ">' + xp + '</div>';
+            innerBoi += '<div class="nine wide column">' + name + '</div>';
+            innerBoi += '<div class="four wide column ">' + xp + '</div>';
             innerBoi += '</div></div></div>'
             //end for loop here
         }
@@ -137,10 +137,10 @@ function renderOverallLeaderboards(user) {
             if (memberArr[i]._id === user._id) {
                 saveIndex = parseInt(i);
                 if (saveIndex < 1) {
-                    saveIndex += 1;
+                    saveIndex += 2;
                 }
                 if (saveIndex < 2) {
-                    saveIndex += 2;
+                    saveIndex += 1;
                 }
                 if (saveIndex > memberArr.length - 1) {
                     saveIndex -= 3;
@@ -164,7 +164,7 @@ function renderOverallLeaderboards(user) {
         }
 
         let innerBoi = '<div class="ui segments">';
-        innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="eleven wide column">Name</div><div class="two wide column">xp:</div></div></div></div>'
+        innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="nine wide column">Name</div><div class="four wide column">xp:</div></div></div></div>'
         //insert for loop here
         for (i in memArray) {
             let type = "teal tertiary";
@@ -179,8 +179,8 @@ function renderOverallLeaderboards(user) {
             }
             innerBoi += '<div class="ui ' + type + ' inverted segment"><div class="ui container" ><div class="ui grid">';
             innerBoi += '<div class="three wide column">#' + rank + '</div>';
-            innerBoi += '<div class="eleven wide column">' + name + '</div>';
-            innerBoi += '<div class="two wide column ">' + xp + '</div>';
+            innerBoi += '<div class="nine wide column">' + name + '</div>';
+            innerBoi += '<div class="four wide column ">' + xp + '</div>';
             innerBoi += '</div></div></div>'
             //end for loop here
         }

@@ -112,4 +112,13 @@ function leaveGroup() {
         })
         .modal('show');
 }
+function copyPasta() {
+    var copyText = document.getElementById('code_input');
+
+    /* Select the text field */
+    copyText.select();
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+}
 

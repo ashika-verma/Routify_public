@@ -24,13 +24,12 @@
     <body class="pushable">
 
         <!-- Sidebar Menu -->
-        <div class="ui vertical inverted sidebar menu left">
-            <div class="item">
-                Ashika Verma
-            </div>
+        <div class="ui vertical yellow inverted sidebar menu left">
+            <div id="logo" class="header item" style=" background-repeat: no-repeat;background-position: center;width:150px;background-color: white;width: 100%; padding:43px; margin: 0; background-image: url('/static/css/img/routifyIcon.svg');"></div>
 
             <a class="item" href="/">You</a>
-            <a class="active item">Leaderboard</a>
+            <a href="/leaderboard" class="item">Leaderboard</a>
+            <a href="/groups" class="active item">Parties</a>
             <a href="/logout" class="item">Log Out</a>
         </div>
 
@@ -165,7 +164,7 @@
             <div class="content yellow">
                 <div class="ui huge input">
                     <input id="code_input" type="text" placeholder="" value="849279">
-                    <button class="ui icon button">
+                    <button onclick=copyPasta() class="ui icon button">
                         <i class="copy icon"></i>
                     </button>
                 </div>

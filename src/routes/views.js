@@ -24,22 +24,20 @@ router.get('/u/profile', function (req, res) {
 
 router.get('/leaderboard', function (req, res) {
 
-    // if (req.user) {
-    //res.redirect("/user/" + req.user._id);
-    res.sendFile('leaderboard.html', { root: 'src/views' });
-    //  } else {
-    //    res.sendFile('home.html', { root: 'src/views' });
-    //}
+    if (req.user) {
+        res.sendFile('leaderboard.html', { root: 'src/views' });
+    } else {
+        res.sendFile('home.html', { root: 'src/views' });
+    }
 });
 
 router.get('/groups', function (req, res) {
 
-    // if (req.user) {
-    //res.redirect("/user/" + req.user._id);
-    res.sendFile('groups.html', { root: 'src/views' });
-    //  } else {
-    //    res.sendFile('home.html', { root: 'src/views' });
-    //}
+    if (req.user) {
+        res.sendFile('groups.html', { root: 'src/views' });
+    } else {
+        res.sendFile('home.html', { root: 'src/views' });
+    }
 });
 router.get('/logout', function (req, res) {
     req.logout();
