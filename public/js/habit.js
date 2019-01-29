@@ -182,7 +182,7 @@ function submitHabitHandler() {
 }
 function renderNewHabits(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        //console.log("you have a user!");
     }
 
     get('/api/habit', { "user": user._id }, function (habitArr) {
@@ -193,7 +193,7 @@ function renderNewHabits(user) {
 
 function renderHabits(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        //console.log("you have a user!");
     }
 
 
@@ -291,27 +291,26 @@ function subtractCount() {
 
 
 function doAlert(changed) {
-    console.log(changed);
     if (changed > 0) {
         $.uiAlert({
-            textHead: 'Fantastic! You just earned __ gold and __ xp!', // header
+            textHead: 'Fantastic! You just earned 2 gold and 5 xp!', // header
             text: 'Keep on going! You are doing great!', // Text
             bgcolor: '#21ba45', // background-color
             textcolor: '#fff', // color
             position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
-            time: 3, // time
+            time: 2, // time
         })
     }
     else if (changed < 0) {
         $.uiAlert({
-            textHead: 'Oh no! You lost __ gold and __ xp!', // header
+            textHead: 'Oh no! You lost 2 gold and 5 xp!', // header
             text: 'Keep on trying with your goal and good luck!', // Text
             bgcolor: '#db2828', // background-color
             textcolor: '#fff', // color
             position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'remove circle', // icon in semantic-UI
-            time: 3, // time
+            time: 2, // time
         })
     }
 }

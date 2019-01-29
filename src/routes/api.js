@@ -128,6 +128,12 @@ router.get('/longterm', function (req, res) {
         res.send(todos);
     });
 });
+router.get('/specificLongterm', function (req, res) {
+    LongTerm.findOne({ _id: req.query.longId }, function (err, long) {
+        console.log(req.body.longId);
+        res.send(long);
+    });
+});
 
 router.post(
     '/longterm',
@@ -474,7 +480,16 @@ router.get('/getSortedMembers', function (req, res) {
 });
 router.post('/updateLevel', function (req, res) {
     User.findOne({ _id: req.body.id }, function (err, user) {
-        user.level = user.level + 1;
+        user.level = req.body.newLevel;
+
+        user.save(function (err) {
+            if (err) console.log(err);
+        });
+    });
+});
+router.post('/updateGold', function (req, res) {
+    User.findOne({ _id: req.body.id }, function (err, user) {
+        user.gold = req.body.newGold;
 
         user.save(function (err) {
             if (err) console.log(err);

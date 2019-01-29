@@ -46,7 +46,6 @@ function longtermDOMObject(longtermJSON, user) {
     longtermsDiv.prepend(segment);
 
 
-    console.log('range-' + longtermJSON._id);
     let input = document.getElementById('range-' + longtermJSON._id);
     input.onchange = onLongtermSlideHandler;
     input.oninput = slideyBoySlides;
@@ -82,7 +81,7 @@ function submitLongtermHandler() {
 
 function renderNewLongterms(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        //console.log("you have a user!");
     }
 
     get('/api/longterm', { "user": user._id }, function (longtermArr) {
@@ -94,7 +93,7 @@ function renderNewLongterms(user) {
 
 function renderLongterms(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        //console.log("you have a user!");
     }
 
 
@@ -118,37 +117,28 @@ function onLongtermSlideHandler() {
     }
 
 
-    get('/api/longterm', {}, function (longtermArr) {
-        let before = 0;
-        for (i in longtermArr) {
-            if (longtermArr[i]._id === longtermID) {
-                before = longtermArr[i].percentage;
-            }
-        }
-        doAlert(newVal - before);
-    });
 
 
 
-    // $.post('/api/longtermUpdated', data, function () {
-
-    // }).done(function () {
-    //     get('/api/whoami', {}, function (user) {
-    //         renderUserInfo(user);
-    //     });
-    // });
     var p = new Promise(function (res, rej) {
         post('/api/longtermUpdated', data);
         setTimeout(
             function () {
                 res('whoo');
-            }, 300);
+            }, 150);
     });
     p.then(function (res) {
         get('/api/whoami', {}, function (user) {
             renderUserInfo(user);
         });
-    })
+    });
+
+    get('/api/specificLongterm', { 'longId': longtermID }, function (longy) {
+        let before = 0;
+        before = longy.percentage;
+        doLAlert(newVal - before);
+    });
+
 }
 
 //updates label and nothing else
@@ -191,36 +181,35 @@ function longtermModal() {
                     id: longtermID,
                     content: newCont,
                 };
-                console.log(this.textContent);
                 savethis.textContent = newCont;
-                post('/api/habitModalUpdated', data);
+                post('/api/longtermModalUpdated', data);
             }
         })
         .modal('show');
 
 }
 
-function doAlert(changed) {
+function doLAlert(changed) {
     if (changed > 0) {
         $.uiAlert({
-            textHead: 'Fantastic! You just earned __ gold and __ xp!', // header
+            textHead: 'Fantastic! You just earned 5 gold and 10 xp!', // header
             text: 'Keep on going! You are doing great!', // Text
             bgcolor: '#21ba45', // background-color
             textcolor: '#fff', // color
             position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
-            time: 3, // time
+            time: 2, // time
         })
     }
     else if (changed < 0) {
         $.uiAlert({
-            textHead: 'Oh no! You lost __ gold and __ xp!', // header
+            textHead: 'Oh no! You lost 5 gold and 10 xp!', // header
             text: 'Keep on trying with your goal and good luck!', // Text
             bgcolor: '#db2828', // background-color
             textcolor: '#fff', // color
             position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'remove circle', // icon in semantic-UI
-            time: 3, // time
+            time: 2, // time
         })
     }
 }

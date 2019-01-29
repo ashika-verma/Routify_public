@@ -11,7 +11,6 @@ function rewardDOMObject(rewardJSON, user) {
         </div>
     </div>
     */
-    console.log(rewardJSON);
     const segment = document.createElement('div');
     segment.setAttribute('id', rewardJSON._id);
     segment.className = 'ui compact segment';
@@ -32,10 +31,9 @@ function rewardDOMObject(rewardJSON, user) {
 
 function claimReward() {
     let goldClaimed = this.textContent;
-    console.log(goldClaimed);
     $.uiAlert({
         textHead: 'You claimed your reward!', // header
-        text: 'May you have fun with ' + this.text, // Text
+        text: 'May you have fun with ' + this.parentElement.firstElementChild.textContent, // Text
         bgcolor: '#19c3aa', // background-color
         textcolor: '#fff', // color
         position: 'bottom-right',// position . top And bottom ||  left / center / right
@@ -82,7 +80,7 @@ function submitRewardHandler() {
 
 function renderRewards(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        // console.log("you have a user!");
     }
 
 
@@ -97,7 +95,7 @@ function renderRewards(user) {
 }
 function renderNewRewards(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        // console.log("you have a user!");
     }
 
     get('/api/reward', { "user": user._id }, function (longtermArr) {
@@ -130,7 +128,6 @@ function rewardModal() {
                     content: newCont,
                     reward: newValue
                 };
-                console.log(this.textContent);
                 savethis.textContent = newCont;
                 savethis.parentElement.lastElementChild.innerHTML = '<i class="large icon ui"><img src="/static/css/img/two-coins.svg"></i><i class="ui horizontal right">' + newValue + '</i>';
                 post('/api/rewardModalUpdated', data);

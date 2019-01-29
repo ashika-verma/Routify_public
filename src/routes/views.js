@@ -4,12 +4,12 @@ const router = express.Router();
 
 // public endpoints
 router.get('/', function (req, res, next) {
-    // if (req.user) {
-    //res.redirect("/user/" + req.user._id);
-    res.sendFile('index.html', { root: 'src/views' });
-    //   } else {
-    //     res.sendFile('home.html', { root: 'src/views' });
-    //}
+    if (req.user) {
+        //res.redirect("/user/" + req.user._id);
+        res.sendFile('index.html', { root: 'src/views' });
+    } else {
+        res.sendFile('home.html', { root: 'src/views' });
+    }
 
 
 });
@@ -41,10 +41,9 @@ router.get('/groups', function (req, res) {
     //    res.sendFile('home.html', { root: 'src/views' });
     //}
 });
-router.get('/logOut', function (req, res) {
-    res.sendFile('home.html', { root: 'src/views' });
+router.get('/logout', function (req, res) {
     req.logout();
-
+    res.redirect('/');
 });
 
 module.exports = router;

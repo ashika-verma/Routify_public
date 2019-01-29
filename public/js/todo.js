@@ -32,13 +32,23 @@ function checkboxClickedHandler() {
     }
     if (this.checked) {
         $.uiAlert({
-            textHead: 'You may now log-in with the username you have chosen', // header
-            text: 'You may now log-in with the username you have chosen', // Text
-            bgcolor: '#19c3aa', // background-color
+            textHead: 'Fantastic! You just earned 5 gold and 10 xp!', // header
+            text: 'Keep on going! You are doing great!', // Text
+            bgcolor: '#21ba45', // background-color
             textcolor: '#fff', // color
             position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
-            time: 3, // time
+            time: 2, // time
+        })
+    } else {
+        $.uiAlert({
+            textHead: 'Oh no! You lost 5 gold and 10 xp!', // header
+            text: 'You can complete your task!! Good luck!', // Text
+            bgcolor: '#db2828', // background-color
+            textcolor: '#fff', // color
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
+            icon: 'remove circle', // icon in semantic-UI
+            time: 2, // time
         })
     }
 
@@ -106,13 +116,12 @@ function submitTodoHandler() {
 
 function renderTodos(user) {
     if (user._id !== undefined) {
-        console.log("you have a user!");
+        // console.log("you have a user!");
     }
 
 
     const todosDiv = document.getElementById('todos');
     get('/api/todo', { "user": user._id }, function (todoArr) {
-        console.log(todoArr);
         for (let i = 0; i < todoArr.length; i++) {
             const currentTodo = todoArr[i];
             if (currentTodo.complete) {
