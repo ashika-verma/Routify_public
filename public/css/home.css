@@ -123,3 +123,8 @@ span.teal{
 .ui.four.wide.column{
     text-align: center;
 }
+@media only screen and (min-width: 690px){
+    #toHide{
+        display: none
+    }
+}
