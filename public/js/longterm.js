@@ -130,8 +130,25 @@ function onLongtermSlideHandler() {
 
 
 
-    post('/api/longtermUpdated', data);
+    // $.post('/api/longtermUpdated', data, function () {
 
+    // }).done(function () {
+    //     get('/api/whoami', {}, function (user) {
+    //         renderUserInfo(user);
+    //     });
+    // });
+    var p = new Promise(function (res, rej) {
+        post('/api/longtermUpdated', data);
+        setTimeout(
+            function () {
+                res('whoo');
+            }, 300);
+    });
+    p.then(function (res) {
+        get('/api/whoami', {}, function (user) {
+            renderUserInfo(user);
+        });
+    })
 }
 
 //updates label and nothing else

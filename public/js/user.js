@@ -1,22 +1,33 @@
+function calculateXPCorrect(level) {
+    console.log(level);
+    sum = 0;
+    for (let i = 0; i < level; i++) {
+        sum += i * 100;
+    }
+    console.log(sum);
+    return sum;
+}
+
 function renderUserInfo(user) {
 
     let levelTitle = '';
     let level = user.level;
     let maxXP = level * 100;
     let maxGold = level * 50;
-    let calculatedXp = user.xp - (level - 1) * 100;
-
+    let calculatedXp = user.xp - calculateXPCorrect(level);
+    let xppercentage = calculatedXp / maxXP;
     if (calculatedXp > maxXP) {
+        console.log('hi');
         level += 1;
         maxXP = level * 100;
         maxGold = level * 50;
-        calculatedXp = user.xp - (level - 1) * 100;
+        calculatedXp = user.xp - calculateXPCorrect(level);
+        xppercentage = calculatedXp / maxXP;
         get('/api/whoami', {}, function (user) {
             post('/api/updateLevel', { id: user._id });
         });
 
     }
-    let xppercentage = calculatedXp / maxXP;
     switch (level) {
         case 1:
             levelTitle = 'Novice';
@@ -64,12 +75,15 @@ function renderUserInfo(user) {
     let divToRender = "";
     divToRender += '<div class="no-hover item"><h3>' + user.name + '</h3></div>'
     divToRender += '<div class="no-hover item"><div class="teal ui ribbon label "> Level ' + level + ': ' + levelTitle + ' </div></div>'
-    divToRender += '<div class="no-hover item"><div><i class="icon"><img src="/static/css/img/diamonds.svg"></i>' + user.xp + '</div><div id="xp-bar" class="ui active small progress teal"><div class="bar"></div><div class="label" style="text-align:right; color:teal">Until next level: ' + calculatedXp + '/' + maxXP + '</div></div></div>';
+    divToRender += '<div class="no-hover item"><div><i class="icon"><img src="/static/css/img/diamonds.svg"></i>' + user.xp + '</div><div id="xp-bar" class="ui active small progress teal"><div class="bar"></div><div class="label" style="text-align:right; color:teal">Until next level: ' + (maxXP - calculatedXp) + '/' + maxXP + '</div></div></div>';
     divToRender += '<div class="no-hover item"><div><i class="icon"><img src="/static/css/img/two-coins.svg"></i>' + user.gold + '/' + maxGold + '</div><div id="gold-bar" class="ui active small progress yellow"><div class="bar"></div></div></div>';
     divToRender += '<div class="ui item"><h4> Join Party</h4></div>';
     divToRender += '<div class="ui item"><h4> Log Out</h4></div>';
     let user_dropdown = document.getElementById('user_dropdown');
     user_dropdown.innerHTML = divToRender;
+    document.getElementById('xp').textContent = user.xp;
+    document.getElementById('gold').textContent = user.gold;
+
 
     if (user._id !== undefined) {
         //if the user exists
@@ -81,7 +95,7 @@ function renderUserInfo(user) {
         });
         console.log(xppercentage);
         $('#gold-bar').progress({
-            percent: parseInt(user.gold)
+            percent: user.gold / maxGold * 100
         });
         console.log('i refuse to work;');
     }

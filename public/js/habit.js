@@ -233,7 +233,18 @@ function addCount() {
         count: label.innerText
     }
 
-    post('/api/habitUpdated', data);
+    var p = new Promise(function (res, rej) {
+        post('/api/habitUpdated', data);
+        setTimeout(
+            function () {
+                res('whoo');
+            }, 300);
+    });
+    p.then(function (res) {
+        get('/api/whoami', {}, function (user) {
+            renderUserInfo(user);
+        });
+    })
 
 }
 
@@ -262,7 +273,18 @@ function subtractCount() {
         count: label.innerText
     }
 
-    post('/api/habitUpdated', data);
+    var p = new Promise(function (res, rej) {
+        post('/api/habitUpdated', data);
+        setTimeout(
+            function () {
+                res('whoo');
+            }, 300);
+    });
+    p.then(function (res) {
+        get('/api/whoami', {}, function (user) {
+            renderUserInfo(user);
+        });
+    })
 
 }
 

@@ -78,7 +78,13 @@ router.post(
         User.findOne({ _id: req.user }, function (err, user) {
             console.log(user);
             console.log(user.xp);
-            user.xp += 10;
+            if (req.body.checked) {
+                user.xp += 10;
+                user.gold += 5;
+            } else {
+                user.xp -= 10;
+                user.gold -= 5;
+            }
             user.save(function (err) {
                 if (err) console.log(err);
             });
@@ -148,9 +154,24 @@ router.post(
     function (req, res) {
         LongTerm.findOne({ _id: req.body.id }, function (err, longterm) {
             //res.send(todo);
+            let oldLongterm = longterm.percentage;
             longterm.percentage = req.body.percentage;
             longterm.save(function (err) {
                 if (err) console.log(err);
+            });
+            User.findOne({ _id: req.user }, function (err, user) {
+                console.log(user);
+                console.log(user.xp);
+                if (req.body.percentage > oldLongterm) {
+                    user.xp += 10;
+                    user.gold += 5;
+                } else {
+                    user.xp -= 10;
+                    user.gold -= 5;
+                }
+                user.save(function (err) {
+                    if (err) console.log(err);
+                });
             });
 
         });
@@ -218,10 +239,25 @@ router.post(
     function (req, res) {
         Habit.findOne({ _id: req.body.id }, function (err, habit) {
             //res.send(todo);
+            let oldhabit = habit.count;
             habit.count = req.body.count;
 
             habit.save(function (err) {
                 if (err) console.log(err);
+            });
+            User.findOne({ _id: req.user }, function (err, user) {
+                console.log(user);
+                console.log(user.xp);
+                if (req.body.count > oldhabit) {
+                    user.xp += 5;
+                    user.gold += 2;
+                } else {
+                    user.xp -= 5;
+                    user.gold -= 2;
+                }
+                user.save(function (err) {
+                    if (err) console.log(err);
+                });
             });
 
         });
@@ -311,7 +347,13 @@ router.post(
 router.get('/leaderboard', function (req, res) {
     User.find({}).sort({ xp: -1 }).limit(5).exec(
         function (err, users) {
-
+            res.send(users)
+        }
+    );
+});
+router.get('/leaderboardAll', function (req, res) {
+    User.find({}).sort({ xp: -1 }).exec(
+        function (err, users) {
             res.send(users)
         }
     );
@@ -422,13 +464,16 @@ router.get('/getSortedMembers', function (req, res) {
 });
 router.post('/updateLevel', function (req, res) {
     User.findOne({ _id: req.body.id }, function (err, user) {
-        user.level = req.body.level + 1;
+        user.level = user.level + 1;
 
         user.save(function (err) {
             if (err) console.log(err);
         });
     });
 });
+function randomXP() {
+    return Math.floor(Math.random() * 2) + 9
+}
 
 
 

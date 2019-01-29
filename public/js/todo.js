@@ -42,12 +42,24 @@ function checkboxClickedHandler() {
         })
     }
 
-    post('/api/todoChecked', data, function () {
+    // post('/api/todoChecked', data, function () {
+    //     get('/api/whoami', {}, function (user) {
+    //         renderUserInfo(user);
+    //     });
+    // });
+
+    var p = new Promise(function (res, rej) {
+        post('/api/todoChecked', data);
+        setTimeout(
+            function () {
+                res('whoo');
+            }, 300);
+    });
+    p.then(function (res) {
         get('/api/whoami', {}, function (user) {
-            console.log(user);
             renderUserInfo(user);
         });
-    });
+    })
 
 }
 
