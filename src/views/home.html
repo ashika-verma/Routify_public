@@ -15,19 +15,20 @@
 </head>
 
 <body>
-    <div class="clip clip-1"></div>
+    <div id="myPage" class="clip clip-1"></div>
     <div class="clip clip-2"></div>
     <div class="clip clip-3"></div>
     <div class="clip clip-4"></div>
     <div class="clip clip-5"></div>
     <div class="ui middle aligned center aligned grid">
         <div class="column">
-            <div id="logo" class="header item" style="background-repeat: no-repeat;background-position: center;/* width: 150px; *//* padding: 10px; */margin: 20px;background-image: url(/static/css/img/routifyIcon.svg);background-size: 300px;height: 100px;"></div>
+            <div id="logo" class="header item" style="background-repeat: no-repeat;background-position: center;/* width: 150px; *//* padding: 10px; */margin: 20 0;background-image: url(/static/css/img/routifyIcon.svg);background-size: 300px;height: 100px;"></div>
 
             <hr class="style1">
             <br>
-            <h4>Welcome back to <span class="teal">Routify</span>!<br />
-                Need an account? Please sign up <a class="ui teal" href="/auth/google"><u>here</u></a>.
+            <h4>Welcome back to <span class="teal">Routify</span>, the best productivity app for millenials in the
+                world.<br />
+                Need an account? Join <a class="ui teal" href="/auth/google"><u>here</u></a> today!
             </h4>
             <button onclick="window.location.href='/auth/google'" class="ui red google button">
                 <i class="google icon"></i>
@@ -35,6 +36,57 @@
             </button>
         </div>
     </div>
+    <div class="ui teal vertical stripe quote segment" style="padding: 40px">
+        <div class="ui equal width stackable internally celled grid">
+            <h1 class="ui josefin">Everyone gets busy. But how do <span class="teal">you</span> make yourself to finish
+                your work?</h1>
+
+            <h3>Routify allows users to gamify their experience of setting and completing goals. Anyone can set
+                something to do that need to be completed later in the day or in the week with To-dos. Routify also
+                allows users to set long term goals so that users can see their progress over the weeks as they finish
+                reading that last book. Routify even lets users track habits, like drinking water, throughout the day.
+                Users can join and compete against their friends as everyone completes more of their goals!</h3>
+        </div>
+    </div>
+    <div class="ui teal vertical stripe quote segment" style="padding: 40px">
+        <div class="ui stackable grid">
+            <div class="row">
+                <h1 class="ui josefin">How does it work?</h1>
+            </div>
+            <div class="row">
+                <div class="ui container fluid">
+
+
+                    <div class="ui stackable grid">
+                        <div class="ui four wide column">
+                            <h3>Write</h3>
+                            <i class="yellow massive sticky note icon"></i>
+                        </div>
+                        <div class="ui four wide column">
+                            <h3>Update</h3>
+                            <i class="green massive edit icon"></i>
+                        </div>
+                        <div class="ui four wide column">
+                            <h3>Share</h3>
+                            <i class="blue massive share alternate icon"></i>
+                        </div>
+                        <div class="ui four wide column">
+                            <h3>Have fun!</h3>
+                            <i class="purple massive glass martini icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="ui inverted teal vertical stripe quote segment" style="text-align:center">
+        <a href="#myPage" title="To Top" style="color:white">
+            <i class="big chevron up icon"></i>
+        </a>
+        <p style="margin-top: 10px">Copyright © Routify 2019</p>
+        <p>Made by OneShot</p>
+    </footer>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -43,5 +95,8 @@
 <script src="/static/js/semantic-ui-alert.js"></script>
 
 <script src="/static/js/api.js"></script>
+<script>
+
+</script>
 
 </html>
