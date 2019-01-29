@@ -26,11 +26,19 @@ function longtermDOMObject(longtermJSON, user) {
     innerBoi += '</div>';
 
     innerBoi += '<div class="right aligned middle aligned six wide column">';
-    if (longtermJSON.percentage > 0) {
+
+
+    if (longtermJSON.percentage > 90) {
         innerBoi += '<div class="ui green horizontal label">';
+    } else if (longtermJSON.percentage > 50) {
+        innerBoi += '<div class="ui olive horizontal label">';
+    } else if (longtermJSON.percentage > 0) {
+        innerBoi += '<div class="ui orange horizontal label">';
     } else {
         innerBoi += '<div class="ui grey horizontal label">';
     }
+
+
     innerBoi += longtermJSON.percentage + '%</div></div></div></div>';
     innerBoi += '<div class="ui slidecontainer"><input type="range" min="0" max="100" value="' + longtermJSON.percentage + '" class="slider" id="range-' + longtermJSON._id + '"></div>'
 

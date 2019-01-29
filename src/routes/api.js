@@ -417,28 +417,19 @@ router.get('/getSortedMembers', function (req, res) {
             })
             res.send(newMembers);
         })
-        // console.log(members);
-        // let memberUserList = [];
-        // for (i = 0; i < members.length; i++) {
-        //     console.log('actual: ' + i);
-        //     please(i);
-        //     User.findOne({ _id: members[i] }, function (err, boi) {
-        //         memberUserList.push(boi);
-        //         console.log('async: ' + i);
-        //         if (memberUserList.length === members.length) {
-        //             memberUserList.sort(function (a, b) {
-        //                 return b.xp - a.xp;
-        //             })
-        //             console.log("im list: " + memberUserList)
-        //             res.send(memberUserList);
-        //         }
-        //     });
-        // }
+
     });
 });
-function please(i) {
-    console.log("hi im i: " + i);
-}
+router.post('/updateLevel', function (req, res) {
+    User.findOne({ _id: req.body.id }, function (err, user) {
+        user.level = req.body.level + 1;
+
+        user.save(function (err) {
+            if (err) console.log(err);
+        });
+    });
+});
+
 
 
 module.exports = router;

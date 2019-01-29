@@ -43,21 +43,23 @@
                     <a class="toc item">
                         <i class="big sidebar icon"></i>
                     </a>
-                    <div class="header item josefin">Routify</div>
+                    <div id="logo" class="header item" style="width:150px; background-image: url('/static/css/img/routifyIcon.svg');"></div>
                     <a class="item" href="/">You</a>
                     <a class="item" href="/leaderboard">Leaderboard</a>
                     <a class="active item">Join Party</a>
                     <a class="item" href="/auth/google">Login</a>
                     <div class="right menu " style="display: flex;">
-                        <div class="item">
-                            <a><i class="large icon"><img src="/static/css/img/diamonds.svg"></i>50</a>
+                        <div class="ui item">
+                            <a><i class="large icon"><img src="/static/css/img/diamonds.svg" data-title="Experience (xp)"
+                                        data-content="You gain experience everytime you complete a task, get further on a project, or develop good habits! Watch your xp level up the more you work hard and compare with your friends!"
+                                        class="popup"></i>50</a>
                         </div>
-                        <div class="item">
-                            <a><i class="large icon"><img src="/static/css/img/two-coins.svg"></i>127</a>
+                        <div class="ui item">
+                            <a><i class="large icon"><img src="/static/css/img/two-coins.svg" data-title="Gold"
+                                        data-content="You earn gold everytime you complete a task, get further on a project, or develop good habits! Use gold to buy rewards that you rightly deserve!"
+                                        class="popup"></i>127</a>
                         </div>
-                        <div class="item">
-                            <a><i class="large icon"><img src="/static/css/img/hearts.svg"></i>100</a>
-                        </div>
+
 
                         <div class="ui item floating dropdown icon  mobile-none">
                             <i class="large user circle outline icon"></i>
@@ -78,15 +80,7 @@
                                         <div class="bar"></div>
                                     </div>
                                 </div>
-                                <div class="no-hover item">
-                                    <div>
-                                        <i class="icon"><img src="/static/css/img/hearts.svg"></i>
-                                        100/100
-                                    </div>
-                                    <div class="ui active small progress red">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
+
                                 <div class="no-hover item">
                                     <div>
                                         <i class="icon"><img src="/static/css/img/two-coins.svg"></i>
@@ -239,6 +233,8 @@
             $('.ui.sidebar')
                 .sidebar('attach events', '.toc.item')
                 ;
+
+            $('.popup').popup();
 
         })
         ;
