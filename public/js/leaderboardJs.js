@@ -138,7 +138,7 @@ function renderOverallLeaderboards(user) {
                 if (saveIndex < 2) {
                     saveIndex += 2;
                 }
-                if (saveIndex > memberArr.length()) {
+                if (saveIndex > memberArr.length) {
                     saveIndex -= 3;
                 }
                 console.log(memberArr[i]);
