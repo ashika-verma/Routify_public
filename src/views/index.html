@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/range.css">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="shortcut icon" href="/static/css/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/css/img/favicon.ico" type="image/x-icon">
 
 
 </head>
@@ -41,7 +43,7 @@
                     <a class="toc item">
                         <i class="big sidebar icon"></i>
                     </a>
-                    <div class="header item josefin">Routify</div>
+                    <div id="logo" class="header item" style="width:150px; background-image: url('/static/css/img/routifyIcon.svg');"></div>
                     <a class="active item" href="/">You</a>
                     <a class="item" href="/leaderboard">Leaderboard</a>
                     <a class="item" href="/groups">Join Party</a>
@@ -296,7 +298,27 @@
                 <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
             </div>
         </div>
-
+        <div id="reward-modal" class="ui modal">
+            <i class="close icon"></i>
+            <div class="header purple">
+                <div class="ui transparent fluid input">
+                    <input id="reward-modal-input" type="text" placeholder="Edit Title..." value="Running away">
+                </div>
+            </div>
+            <div class="content purple">
+                <h4>Date:</h4>
+                <div class="ui calendar" id="reward-calendar">
+                    <div class="ui input left icon">
+                        <i class="calendar icon"></i>
+                        <input id="reward-modal-date" type="text" placeholder="Date">
+                    </div>
+                </div>
+            </div>
+            <div class="actions purple">
+                <div class="ui approve right labeled icon button">Save<i class="checkmark icon"></i></div>
+                <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
+            </div>
+        </div>
 
     </body>
 </body>

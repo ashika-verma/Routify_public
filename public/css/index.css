@@ -145,3 +145,11 @@ input[type=checkbox]:checked + label{
 .ui.progress .bar{
     min-width: 0;
 }
+#logo{
+    width: 150px;
+    background-image: url(/static/css/img/routifyIcon.svg);
+    background-size: 150px;
+    height: 50px;
+    background-repeat: no-repeat;
+    margin: 0 10px
+}

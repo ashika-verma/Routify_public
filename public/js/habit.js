@@ -276,7 +276,7 @@ function doAlert(changed) {
             text: 'Keep on going! You are doing great!', // Text
             bgcolor: '#21ba45', // background-color
             textcolor: '#fff', // color
-            position: 'top-right',// position . top And bottom ||  left / center / right
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'checkmark box', // icon in semantic-UI
             time: 3, // time
         })
@@ -287,7 +287,7 @@ function doAlert(changed) {
             text: 'Keep on trying with your goal and good luck!', // Text
             bgcolor: '#db2828', // background-color
             textcolor: '#fff', // color
-            position: 'top-right',// position . top And bottom ||  left / center / right
+            position: 'bottom-right',// position . top And bottom ||  left / center / right
             icon: 'remove circle', // icon in semantic-UI
             time: 3, // time
         })

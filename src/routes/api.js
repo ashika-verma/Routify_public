@@ -269,6 +269,7 @@ router.post(
         const newReward = new Reward({
             'creator_id': req.user._id,
             'text': req.body.content,
+            'reward': req.body.reward
         });
         newReward.save(function (err, reward) {
 
@@ -279,6 +280,32 @@ router.post(
 
     }
 );
+router.post(
+    '/rewardDeleted',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Reward.deleteOne({ _id: req.body.id }).exec();
+        res.send({});
+
+    }
+);
+router.post(
+    '/rewardModalUpdated',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        Reward.findOne({ _id: req.body.id }, function (err, todo) {
+            //res.send(todo);
+            todo.text = req.body.content;
+
+            todo.save(function (err) {
+                if (err) console.log(err);
+            });
+
+        });
+        res.send({});
+    }
+);
+
 
 //LEADERBOARD STUFF
 router.get('/leaderboard', function (req, res) {

@@ -1,48 +1,33 @@
 function rewardDOMObject(rewardJSON, user) {
-
-    // <div onclick="claimReward" class="ui compact segment">looked at phone
-    //     <i class="ui horizontal right">10</i>
-    //     <i class="large icon ui horizontal right"><img src="/static/css/img/two-coins.svg"></i>
-    // </div>
-
-
-
-
-    {/* <div id="5c4a98395507ba30f0c8724f" class="ui compact segment ">
+    const rewardsDiv = document.getElementById('rewards');
+    /*
+    <div class="ui compact segment">
         <div class="ui grid">
-            <div class="column twelve wide">sob in different corners of the room</div>
-            <div class="column four wide right floated">
+            <div class="left aligned ten wide column">stop</div>
+            <div class="right aligned middle aligned six wide column">
+                <i class="large icon ui "><img src="/static/css/img/two-coins.svg"></i>
                 <i class="ui horizontal right">10</i>
-                <i class="large icon ui horizontal right">
-                    <img src="/static/css/img/two-coins.svg">
-                </i>
             </div>
         </div>
-    </div> */}
+    </div>
+    */
     console.log(rewardJSON);
     const segment = document.createElement('div');
     segment.setAttribute('id', rewardJSON._id);
     segment.className = 'ui compact segment';
-    segment.innerText = rewardJSON.text;
-    segment.onclick = claimReward;
 
-    const num = document.createElement('i');
-    num.className = 'ui horizontal right';
-    num.innerText = 10;
-    segment.appendChild(num);
+    let innerBoi = '<div class="ui grid"><div class="left aligned ten wide column">' + rewardJSON.text + '</div>';
+    innerBoi += '<div class="right aligned middle aligned six wide column">';
+    innerBoi += '<i class="large icon ui"><img src="/static/css/img/two-coins.svg"></i><i class="ui horizontal right">' + rewardJSON.reward + '</i>';
+    innerBoi += '</div></div></div>';
 
-    const icon = document.createElement('i');
-    icon.className = 'large icon ui horizontal right';
-    const image = document.createElement('img');
-    image.src = "/static/css/img/two-coins.svg";
-    icon.appendChild(image);
-    segment.appendChild(icon);
+    segment.innerHTML = innerBoi;
+
+    rewardsDiv.prepend(segment);
+    segment.firstElementChild.firstElementChild.onclick = rewardModal;
+    segment.firstElementChild.lastElementChild.onclick = claimReward;
 
 
-    if (user._id !== undefined) {
-        //if the user exists
-    }
-    return segment;
 }
 
 function claimReward() {
@@ -52,7 +37,7 @@ function claimReward() {
         text: 'May you have fun with ' + this.text, // Text
         bgcolor: '#19c3aa', // background-color
         textcolor: '#fff', // color
-        position: 'top-right',// position . top And bottom ||  left / center / right
+        position: 'bottom-right',// position . top And bottom ||  left / center / right
         icon: 'checkmark box', // icon in semantic-UI
         time: 3, // time
     })
@@ -64,36 +49,17 @@ function submitRewardHandler() {
 
 
     const data = {
-        content: newRewardInput.value
+        content: newRewardInput.value,
+        reward: 10
     };
 
     post('/api/reward', data, reward => {
 
-        console.log(reward);
-        //make new reward here
-        const rewardsDiv = document.getElementById('rewards');
-
-
-        const segment = document.createElement('div');
-        segment.setAttribute('id', reward.id);
-        segment.className = 'ui compact segment';
-        segment.onclick = claimReward;
-        segment.innerText = newRewardInput.value;
-
-        const num = document.createElement('i');
-        num.className = 'ui horizontal right';
-        num.innerText = 10;
-        segment.appendChild(num);
-
-        const icon = document.createElement('i');
-        icon.className = 'large icon ui horizontal right';
-        const image = document.createElement('img');
-        image.src = "/static/css/img/two-coins.svg";
-        icon.appendChild(image);
-        segment.appendChild(icon);
-
-        rewardsDiv.prepend(segment);
-        newRewardInput.value = '';
+        get('/api/whoami', {}, function (user) {
+            const longtermsDiv = document.getElementById('rewards');
+            renderNewRewards(user)
+            document.getElementById("reward-text-input").value = "";
+        });
     });
 
 }
@@ -109,9 +75,48 @@ function renderRewards(user) {
     get('/api/reward', { "user": user._id }, function (rewardArr) {
         for (let i = 0; i < rewardArr.length; i++) {
             const currentReward = rewardArr[i];
-            rewardsDiv.prepend(rewardDOMObject(currentReward, user));
-
+            rewardDOMObject(currentReward, user);
 
         }
     });
+}
+function renderNewRewards(user) {
+    if (user._id !== undefined) {
+        console.log("you have a user!");
+    }
+
+    get('/api/reward', { "user": user._id }, function (longtermArr) {
+        const currentLongterm = longtermArr[longtermArr.length - 1];
+        rewardDOMObject(currentLongterm, user);
+    });
+}
+
+function rewardModal() {
+    let longtermID = this.parentElement.parentElement.id;
+    // document.getElementById(longtermID).textContent;
+    let savethis = this;
+    // //childNodes[0].nodeValue
+    document.getElementById('reward-modal-input').value = this.textContent;
+    $('#reward-modal')
+        .modal({
+            onDeny: function () {
+                const data = {
+                    id: longtermID,
+                };
+                document.getElementById(longtermID).outerHTML = "";
+                post('/api/rewardDeleted', data);
+            },
+            onApprove: function () {
+                const newCont = document.getElementById('reward-modal-input').value;
+                const data = {
+                    id: longtermID,
+                    content: newCont,
+                };
+                console.log(this.textContent);
+                savethis.textContent = newCont;
+                post('/api/rewardModalUpdated', data);
+            }
+        })
+        .modal('show');
+
 }
