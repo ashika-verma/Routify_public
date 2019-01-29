@@ -41,5 +41,10 @@ router.get('/groups', function (req, res) {
     //    res.sendFile('home.html', { root: 'src/views' });
     //}
 });
+router.get('/logOut', function (req, res) {
+    res.sendFile('home.html', { root: 'src/views' });
+    req.logout();
+
+});
 
 module.exports = router;

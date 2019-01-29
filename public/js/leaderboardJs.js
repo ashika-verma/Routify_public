@@ -45,7 +45,8 @@ function renderLeaderboards(user) {
         console.log(groupArr);
         for (j in groupArr) {
 
-            get('/api/getSortedMembers', { "group_id": groupArr[j]._id }, function (memberArr) {
+            get('/api/getSortedMembers', { "group_id": groupArr[j]._id }, function (oof) {
+                let memberArr = oof.newMembers;
                 console.log(memberArr);
                 console.log(j);
                 let members;
@@ -56,8 +57,8 @@ function renderLeaderboards(user) {
                 if (j === 0) {
                     leaderboard.style = 'border-top: none';
                 }
-
-                let innerBoi = '<div class="ui segments">';
+                let innerBoi = '<h3 style="padding-left:10px; margin-bottom:-7px">' + oof.groupName + '</h3>';
+                innerBoi += '<div class="ui segments">';
                 innerBoi += '<div class="ui teal primary inverted segment fluid icon input"><div class="ui container" ><div class="ui grid"><div class="three wide column">Rank</div><div class="eleven wide column">Name</div><div class="two wide column">xp:</div></div></div></div>'
                 //insert for loop here
                 for (i in memberArr) {
@@ -135,10 +136,13 @@ function renderOverallLeaderboards(user) {
         for (i in memberArr) {
             if (memberArr[i]._id === user._id) {
                 saveIndex = parseInt(i);
+                if (saveIndex < 1) {
+                    saveIndex += 1;
+                }
                 if (saveIndex < 2) {
                     saveIndex += 2;
                 }
-                if (saveIndex > memberArr.length) {
+                if (saveIndex > memberArr.length - 1) {
                     saveIndex -= 3;
                 }
                 console.log(memberArr[i]);
@@ -187,5 +191,18 @@ function renderOverallLeaderboards(user) {
     });
 
 }
+function leaderMenu(text) {
+    if (text === "overall") {
+        document.getElementById('overall').className = "ui active teal item";
+        document.getElementById('your').className = "ui teal item";
+        document.getElementById('renderLeaderboards').style.display = 'none';
+        document.getElementById('renderOverallLeaderboards').style.display = 'block';
+    } else {
+        document.getElementById('your').className = "ui active teal item";
+        document.getElementById('overall').className = "ui teal item";
+        document.getElementById('renderLeaderboards').style.display = 'block';
+        document.getElementById('renderOverallLeaderboards').style.display = 'none';
 
+    }
+}
 

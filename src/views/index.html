@@ -46,7 +46,7 @@
                     <div id="logo" class="header item" style="width:150px; background-image: url('/static/css/img/routifyIcon.svg');"></div>
                     <a class="active item" href="/">You</a>
                     <a class="item" href="/leaderboard">Leaderboard</a>
-                    <a class="item" href="/groups">Join Party</a>
+                    <a class="item" href="/groups">Parties</a>
                     <a class="item" href="/auth/google">Login</a>
                     <div class="right menu " style="display: flex;">
                         <div class="ui item">
@@ -173,17 +173,6 @@
                 <div class="eight wide tablet four wide computer column">
                     <div class="ui secondary pointing menu">
                         <h3 class="item">Habits</h3>
-                        <div class="right menu">
-                            <a class="ui blue active item">
-                                All
-                            </a>
-                            <a class="ui blue item">
-                                Not Done
-                            </a>
-                            <a class="blue ui item">
-                                Done
-                            </a>
-                        </div>
                     </div>
                     <div class="ui segments">
                         <div class="ui primary blue inverted segment fluid icon input">
@@ -200,17 +189,6 @@
                 <div class="eight wide tablet four wide computer column">
                     <div class="ui secondary pointing menu">
                         <h3 class="item">Rewards</h3>
-                        <div class="right menu">
-                            <a class="ui active purple item">
-                                All
-                            </a>
-                            <a class="ui purple item">
-                                Not Done
-                            </a>
-                            <a class="purple ui item">
-                                Done
-                            </a>
-                        </div>
                     </div>
                     <div class="ui segments">
                         <div class="ui primary inverted purple segment fluid icon input">
@@ -236,15 +214,6 @@
                     <input id="todo-modal-input" type="text" placeholder="Edit Title..." value="Running away">
                 </div>
             </div>
-            <div class="content yellow">
-                <h4>Date:</h4>
-                <div class="ui calendar" id="todo-calendar">
-                    <div class="ui input left icon">
-                        <i class="calendar icon"></i>
-                        <input id="todo-modal-date" type="text" placeholder="Date">
-                    </div>
-                </div>
-            </div>
             <div class="actions yellow">
                 <div class="ui approve right labeled icon button">Save<i class="checkmark icon"></i></div>
                 <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
@@ -256,15 +225,6 @@
             <div class="header green">
                 <div class="ui transparent fluid input">
                     <input id="longterm-modal-input" type="text" placeholder="Edit Title..." value="Running away">
-                </div>
-            </div>
-            <div class="content green">
-                <h4>Date:</h4>
-                <div class="ui calendar" id="longterm-calendar">
-                    <div class="ui input left icon">
-                        <i class="calendar icon"></i>
-                        <input id="longterm-modal-date" type="text" placeholder="Date">
-                    </div>
                 </div>
             </div>
             <div class="actions green">
@@ -280,15 +240,6 @@
                     <input id="habit-modal-input" type="text" placeholder="Edit Title..." value="Running away">
                 </div>
             </div>
-            <div class="content blue">
-                <h4>Date:</h4>
-                <div class="ui calendar" id="habit-calendar">
-                    <div class="ui input left icon">
-                        <i class="calendar icon"></i>
-                        <input id="habit-modal-date" type="text" placeholder="Date">
-                    </div>
-                </div>
-            </div>
             <div class="actions blue">
                 <div class="ui approve right labeled icon button">Save<i class="checkmark icon"></i></div>
                 <div class="ui cancel red right labeled icon button">Delete<i class="times icon"></i></div>
@@ -302,12 +253,9 @@
                 </div>
             </div>
             <div class="content purple">
-                <h4>Date:</h4>
-                <div class="ui calendar" id="reward-calendar">
-                    <div class="ui input left icon">
-                        <i class="calendar icon"></i>
-                        <input id="reward-modal-date" type="text" placeholder="Date">
-                    </div>
+                <h4>Gold:</h4>
+                <div class="ui input left ">
+                    <input id="reward-modal-gold" type="text" placeholder="10">
                 </div>
             </div>
             <div class="actions purple">

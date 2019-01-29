@@ -77,7 +77,7 @@ function renderUserInfo(user) {
     divToRender += '<div class="no-hover item"><div class="teal ui ribbon label "> Level ' + level + ': ' + levelTitle + ' </div></div>'
     divToRender += '<div class="no-hover item"><div><i class="icon"><img src="/static/css/img/diamonds.svg"></i>' + user.xp + '</div><div id="xp-bar" class="ui active small progress teal"><div class="bar"></div><div class="label" style="text-align:right; color:teal">Until next level: ' + (maxXP - calculatedXp) + '/' + maxXP + '</div></div></div>';
     divToRender += '<div class="no-hover item"><div><i class="icon"><img src="/static/css/img/two-coins.svg"></i>' + user.gold + '/' + maxGold + '</div><div id="gold-bar" class="ui active small progress yellow"><div class="bar"></div></div></div>';
-    divToRender += '<div class="ui item"><h4> Join Party</h4></div>';
+    //divToRender += '<div class="ui item"><h4> Join Party</h4></div>';
     divToRender += '<div class="ui item"><h4> Log Out</h4></div>';
     let user_dropdown = document.getElementById('user_dropdown');
     user_dropdown.innerHTML = divToRender;

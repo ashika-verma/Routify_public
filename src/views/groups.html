@@ -46,18 +46,18 @@
                     <div id="logo" class="header item" style="width:150px; background-image: url('/static/css/img/routifyIcon.svg');"></div>
                     <a class="item" href="/">You</a>
                     <a class="item" href="/leaderboard">Leaderboard</a>
-                    <a class="active item">Join Party</a>
+                    <a class="active item">Parties</a>
                     <a class="item" href="/auth/google">Login</a>
                     <div class="right menu " style="display: flex;">
                         <div class="ui item">
                             <a><i class="large icon"><img src="/static/css/img/diamonds.svg" data-title="Experience (xp)"
                                         data-content="You gain experience everytime you complete a task, get further on a project, or develop good habits! Watch your xp level up the more you work hard and compare with your friends!"
-                                        class="popup"></i>50</a>
+                                        class="popup"></i><span id="xp"></span></a>
                         </div>
                         <div class="ui item">
                             <a><i class="large icon"><img src="/static/css/img/two-coins.svg" data-title="Gold"
                                         data-content="You earn gold everytime you complete a task, get further on a project, or develop good habits! Use gold to buy rewards that you rightly deserve!"
-                                        class="popup"></i>127</a>
+                                        class="popup"></i><span id="gold"></span></a>
                         </div>
 
 
@@ -111,13 +111,13 @@
                     <div class="sixteen wide computer column">
 
                         <div class="ui secondary pointing menu">
-                            <h3 class="item">Groups</h3>
+                            <h3 class="item">Parties</h3>
                             <div class="right menu">
                                 <a class="ui purple item" onclick="joinGroupModal()">
-                                    Join Group
+                                    Join Party
                                 </a>
                                 <a class="ui purple item" onclick="createGroupModal()">
-                                    Create Group
+                                    Create Party
                                 </a>
                             </div>
                         </div>
@@ -144,11 +144,11 @@
         <div id="create-group-modal" class="ui small coupled modal">
             <i class="close icon"></i>
             <div class="header yellow">
-                Create a new group!
+                Create a new party!
             </div>
             <div class="content yellow">
                 <div class="ui fluid input">
-                    <input id="create-group-input" type="text" placeholder="Enter Group Name...">
+                    <input id="create-group-input" type="text" placeholder="Enter Party Name...">
                 </div>
             </div>
             <div class="actions yellow">
@@ -160,7 +160,7 @@
         <div id="new-group-modal" class="ui small coupled modal">
             <i class="close icon"></i>
             <div class="header yellow">
-                Here is your group code!
+                Here is your party code!
             </div>
             <div class="content yellow">
                 <div class="ui huge input">
@@ -240,6 +240,7 @@
         ;
 </script>
 <script src="/static/js/api.js"></script>
+<script src="/static/js/user.js"></script>
 <script src="/static/js/groups.js"></script>
 <script src="/static/js/groups_page.js"></script>
 

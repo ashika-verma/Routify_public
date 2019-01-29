@@ -332,11 +332,26 @@ router.post(
         Reward.findOne({ _id: req.body.id }, function (err, todo) {
             //res.send(todo);
             todo.text = req.body.content;
+            todo.reward = req.body.reward;
 
             todo.save(function (err) {
                 if (err) console.log(err);
             });
 
+        });
+        res.send({});
+    }
+);
+router.post(
+    '/rewardClaimed',
+    connect.ensureLoggedIn(),
+    function (req, res) {
+        User.findOne({ _id: req.user }, function (err, user) {
+
+            user.gold -= parseInt(req.body.gold);
+            user.save(function (err) {
+                if (err) console.log(err);
+            });
         });
         res.send({});
     }
@@ -369,12 +384,7 @@ router.post(
         let code = Math.round(100000 + Math.random() * 900000);
         let code_string = "" + code;
 
-        // Group.find({ code: code_string }, function (err, groups) {
-        //     if (err) {
-        //         //if doesn't exist, do things
-        //     }
-        //     res.send(rewards);
-        // });
+
         const newGroup = new Group({
             'name': req.body.group_name,
             'color': req.body.color,
@@ -457,7 +467,7 @@ router.get('/getSortedMembers', function (req, res) {
             newMembers.sort(function (a, b) {
                 return b.xp - a.xp;
             })
-            res.send(newMembers);
+            res.send({ "newMembers": newMembers, "groupName": group.name });
         })
 
     });

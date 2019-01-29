@@ -31,7 +31,8 @@ function rewardDOMObject(rewardJSON, user) {
 }
 
 function claimReward() {
-
+    let goldClaimed = this.textContent;
+    console.log(goldClaimed);
     $.uiAlert({
         textHead: 'You claimed your reward!', // header
         text: 'May you have fun with ' + this.text, // Text
@@ -40,6 +41,20 @@ function claimReward() {
         position: 'bottom-right',// position . top And bottom ||  left / center / right
         icon: 'checkmark box', // icon in semantic-UI
         time: 3, // time
+    });
+
+
+    var p = new Promise(function (res, rej) {
+        post('/api/rewardClaimed', { "gold": goldClaimed });
+        setTimeout(
+            function () {
+                res('whoo');
+            }, 300);
+    });
+    p.then(function (res) {
+        get('/api/whoami', {}, function (user) {
+            renderUserInfo(user);
+        });
     })
 
 }
@@ -97,6 +112,7 @@ function rewardModal() {
     let savethis = this;
     // //childNodes[0].nodeValue
     document.getElementById('reward-modal-input').value = this.textContent;
+    document.getElementById('reward-modal-gold').value = this.parentElement.lastElementChild.textContent;
     $('#reward-modal')
         .modal({
             onDeny: function () {
@@ -108,12 +124,15 @@ function rewardModal() {
             },
             onApprove: function () {
                 const newCont = document.getElementById('reward-modal-input').value;
+                const newValue = document.getElementById('reward-modal-gold').value;
                 const data = {
                     id: longtermID,
                     content: newCont,
+                    reward: newValue
                 };
                 console.log(this.textContent);
                 savethis.textContent = newCont;
+                savethis.parentElement.lastElementChild.innerHTML = '<i class="large icon ui"><img src="/static/css/img/two-coins.svg"></i><i class="ui horizontal right">' + newValue + '</i>';
                 post('/api/rewardModalUpdated', data);
             }
         })

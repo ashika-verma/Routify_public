@@ -46,18 +46,18 @@
                     <div id="logo" class="header item" style="width:150px; background-image: url('/static/css/img/routifyIcon.svg');"></div>
                     <a class="item" href="/">You</a>
                     <a class="active item" href="/leaderboard">Leaderboard</a>
-                    <a class="item" href="/groups">Join Party</a>
+                    <a class="item" href="/groups">Parties</a>
                     <a class="item" href="/auth/google">Login</a>
                     <div class="right menu " style="display: flex;">
                         <div class="ui item">
                             <a><i class="large icon"><img src="/static/css/img/diamonds.svg" data-title="Experience (xp)"
                                         data-content="You gain experience everytime you complete a task, get further on a project, or develop good habits! Watch your xp level up the more you work hard and compare with your friends!"
-                                        class="popup"></i>50</a>
+                                        class="popup"></i><span id="xp"></span></a>
                         </div>
                         <div class="ui item">
                             <a><i class="large icon"><img src="/static/css/img/two-coins.svg" data-title="Gold"
                                         data-content="You earn gold everytime you complete a task, get further on a project, or develop good habits! Use gold to buy rewards that you rightly deserve!"
-                                        class="popup"></i>127</a>
+                                        class="popup"></i><span id="gold"></span></a>
                         </div>
                         <div class="ui item floating dropdown icon  mobile-none">
                             <i class="large user circle outline icon"></i>
@@ -92,7 +92,7 @@
                                     <h4>Join Party</h4>
                                 </div>
                                 <div class="ui item">
-                                    <h4>Log Out</h4>
+                                    <h4><a href="/logOut">Log Out</a></h4>
                                 </div>
 
                             </div>
@@ -111,12 +111,13 @@
                         <div class="ui secondary pointing menu">
                             <h3 class="item">Leaderboard</h3>
                             <div class="right menu">
-                                <a onclick="" class="ui teal item">
-                                    Your Leaderboards
-                                </a>
-                                <a class="ui active teal item">
+                                <a id="overall" onclick="leaderMenu('overall')" class="ui active teal item">
                                     Overall
                                 </a>
+                                <a id="your" onclick="leaderMenu('your')" class="ui teal item">
+                                    Your Leaderboards
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -172,6 +173,7 @@
         ;
 </script>
 <script src="/static/js/api.js"></script>
+<script src="/static/js/user.js"></script>
 <script src="/static/js/leaderboardJs.js"></script>
 <script src="/static/js/leaderboard.js"></script>
 
