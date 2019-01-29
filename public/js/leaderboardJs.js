@@ -135,6 +135,12 @@ function renderOverallLeaderboards(user) {
         for (i in memberArr) {
             if (memberArr[i]._id === user._id) {
                 saveIndex = parseInt(i);
+                if (saveIndex < 2) {
+                    saveIndex += 2;
+                }
+                if (saveIndex > memberArr.length()) {
+                    saveIndex -= 3;
+                }
                 console.log(memberArr[i]);
                 break;
             }
@@ -158,7 +164,7 @@ function renderOverallLeaderboards(user) {
         //insert for loop here
         for (i in memArray) {
             let type = "teal tertiary";
-            let rank = parseInt(i) + 1;
+            let rank = parseInt(i) + saveIndex - 1;
             let name = memArray[i].name;
             let xp = memArray[i].xp;
             if (i % 2 !== 0) {
