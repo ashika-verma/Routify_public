@@ -21,9 +21,11 @@
 function renderUserInfo(user) {
     let oldLevel = user.level;
     let calculatedXp = 0;
+    let levelTitle = '';
     if (user.xp > 4800) {
         user.level = 10;
         calculatedXp = user.xp - 4800;
+        levelTitle = "GOD";
     } else if (user.xp > 3700) {
         user.level = 9;
         calculatedXp = user.xp - 3700;
@@ -58,7 +60,7 @@ function renderUserInfo(user) {
         });
     }
 
-    let levelTitle = '';
+
     let level = user.level;
     let maxXP = level * 100;
     let maxGold = level * 50;
