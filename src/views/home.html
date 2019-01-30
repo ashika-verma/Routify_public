@@ -16,12 +16,12 @@
 </head>
 
 <body>
-    <div id="myPage" class="clip clip-1"></div>
+    <div class="clip clip-1"></div>
     <div class="clip clip-2"></div>
     <div class="clip clip-3"></div>
     <div class="clip clip-4"></div>
     <div class="clip clip-5"></div>
-    <div class="ui middle aligned center aligned grid">
+    <div id="myPage" class="sticky top ui middle aligned center aligned grid">
         <div class="column">
             <div id="logo" class="header item" style="background-repeat: no-repeat;background-position: center;/* width: 150px; *//* padding: 10px; */margin: 20 0;background-image: url(/static/css/img/routifyIcon.svg);background-size: 300px;height: 100px;"></div>
 
@@ -38,8 +38,8 @@
         </div>
     </div>
 
-    <div id="moreContent" class="ui teal vertical stripe quote segment" style="padding: 40px">
-        <div class="ui equal width stackable internally celled grid">
+    <div id="secondDiv" class="ui container" style="height: 100%">
+        <div id="second" class="ui raised very padded segment" style="top:20%">
             <h1 class="ui josefin">Everyone gets busy. But how do <span class="teal">you</span> make yourself to finish
                 your work?</h1>
 
@@ -50,45 +50,50 @@
                 Users can join and compete against their friends as everyone completes more of their goals!</h3>
         </div>
     </div>
-    <div class="ui teal vertical stripe quote segment" style="padding: 40px">
-        <div class="ui stackable grid">
-            <div class="row">
-                <h1 class="ui josefin">How does it work?</h1>
-            </div>
-            <div class="row">
-                <div class="ui container fluid">
+    <div id="thirdDiv" class="ui container" style="height: 82%">
+        <div id="third" class="ui very padded raised segment" style="top:7%">
+            <div class="ui stackable grid">
+                <div class="row">
+                    <h1 class="ui josefin">How does it work?</h1>
+                </div>
+                <div class="row">
+                    <div class="ui container fluid">
 
 
-                    <div class="ui stackable grid">
-                        <div class="ui four wide column">
-                            <h3>Write</h3>
-                            <i class="yellow massive sticky note icon"></i>
-                        </div>
-                        <div class="ui four wide column">
-                            <h3>Update</h3>
-                            <i class="green massive edit icon"></i>
-                        </div>
-                        <div class="ui four wide column">
-                            <h3>Share</h3>
-                            <i class="blue massive share alternate icon"></i>
-                        </div>
-                        <div class="ui four wide column">
-                            <h3>Have fun!</h3>
-                            <i class="purple massive glass martini icon"></i>
+                        <div class="ui stackable grid">
+                            <div class="ui four wide column">
+                                <h3>Write</h3>
+                                <i class="yellow massive sticky note icon"></i>
+                            </div>
+                            <div class="ui four wide column">
+                                <h3>Update</h3>
+                                <i class="green massive edit icon"></i>
+                            </div>
+                            <div class="ui four wide column">
+                                <h3>Share</h3>
+                                <i class="blue massive share alternate icon"></i>
+                            </div>
+                            <div class="ui four wide column">
+                                <h3>Have fun!</h3>
+                                <i class="purple massive glass martini icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
+
     </div>
-    <footer class="ui inverted teal vertical stripe quote segment" style="text-align:center; padding: 40px">
+
+
+    <div class="ui vertical stripe quote segment" style="text-align:center; padding: 40px">
         <a href="#myPage" id="toHide" title="To Top" style="color:white">
             <i class="big chevron up icon"></i>
         </a>
         <p style="margin-top: 10px">Copyright © Routify 2019</p>
         <p>Made by OneShot</p>
-    </footer>
+    </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -98,6 +103,53 @@
 
 <script src="/static/js/api.js"></script>
 <script>
+    function Utils() {
+
+    }
+
+    Utils.prototype = {
+        constructor: Utils,
+        isElementInView: function (element, fullyInView) {
+            var pageTop = $(window).scrollTop();
+            var pageBottom = pageTop + $(window).height();
+            var elementTop = $(element).offset().top;
+            var elementBottom = elementTop + $(element).height();
+
+            if (fullyInView === true) {
+                return ((pageTop < elementTop) && (pageBottom > elementBottom));
+            } else {
+                return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+            }
+        }
+    };
+
+    var Utils = new Utils();
+    function check() {
+        var first = Utils.isElementInView($('#logo'), false);
+        var second = Utils.isElementInView($('#second'), false);
+        var third = Utils.isElementInView($('#third'), false);
+        if (first) {
+            jump('myPage');
+        }
+        else if (second) {
+            jump('secondDiv');
+        }
+        else if (third) {
+            jump('thirdDiv');
+        }
+    }
+
+
+
+    function jump(h) {
+        var url = location.href;               //Save down the URL without hash.
+        location.href = "#" + h;                 //Go to the target element.
+        history.replaceState(null, null, url);   //Don't like hashes. Changing it back.
+    }
+    $(document).ready(function () {
+
+        setInterval(check, 1400);
+    });
 
 </script>
 

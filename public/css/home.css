@@ -16,6 +16,7 @@ body {
   background-color: white;
  height: 100%;
  width: 100%;
+  -webkit-transition: all 0.5s ease;
  
 }
 .ui.grid, #login{
@@ -26,9 +27,11 @@ body {
 }
 
 .clip{
-    position: absolute;
+    position: fixed;
     height:100%;
     width:100%;
+
+    
 }
 
 
@@ -36,6 +39,7 @@ body {
     background-color: rgba(224, 57, 151,.9);
     -webkit-clip-path: polygon(0 72%, 0% 100%, 23% 100%);
     clip-path: polygon(0 72%, 0% 100%, 23% 100%);
+   
     
 }
 
